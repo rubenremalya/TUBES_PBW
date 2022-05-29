@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>datamurid</title>
+     <link rel="stylesheet" href="styledatasiswa.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="header">
+            <div class="peteemte">
+                <a id="home" href="/menu">PeTeEmTe SD Smarty</a>
+            </div>
+            <div class="head_link">
+                <a id="link1" href="/views/Admin/periode.ejs">Periode PTMT</a>
+                <a id="link2" href="/views/Admin/dataMurid.ejs">Data Murid</a>
+                <a id="link3" href="/views/Admin/dataGuru.ejs">Data Guru</a>
+                <a id="link4" href="/views/Admin/daftarHadir.ejs">Daftar Kehadiran</a>
+            </div>
+            <button style="font-size:24px" ><i class="fa fa-sign-out"></i>
+        </div>
+        <div class="background_menu">
+            
+            </div>
+        </div>
+        <div class="judul">
+        <h1>Data Siswa</h1>
+        </div>
+        <div class="data">
+            <table>
+            <tr><td style="padding-bottom: 10px;"><label>Nomor Induk Siswa:<td style="padding-bottom: 10px;"><input type="text" name="Fname"></td></label></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Nama Siswa:<td style="padding-bottom: 10px;"><input type="text" name="Lname"></td></label></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Kelas:<td style="padding-bottom: 10px;"><input type="text" name="lahir" ></td></label></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Email Siswa:<td style="padding-bottom: 10px;"><input type="password" name="pwd" /></label></td></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Tanggal Lahir:<td style="padding-bottom: 10px;"><input type="password" name="RePwd" /></label></td></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Nomor Ruang:<td style="padding-bottom: 10px;"><input type="password" name="RePwd" /></label></td></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Nama Orang Tua/Wali:<td style="padding-bottom: 10px;"><input type="password" name="RePwd" /></label></td></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Email Orang Tua:<td style="padding-bottom: 10px;"><input type="password" name="RePwd" /></label></td></td></tr>
+            
+        </table>
+        <div class="generate">
+            <button type="button" id="btn_generate" onclick="goTo()">Generate Password untuk siswa</button>
+        </div>
+        </div>  
+</body>
+</html>
