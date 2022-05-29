@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
     res.render('loginpage');
 });
 
+app.get('/ChangePass', (req, res) => {
+    res.render('ChangePass');
+});
+
 app.get('/menu', (req, res) => {
     res.render('menu');
 });
@@ -35,7 +39,7 @@ app.get('/daftarHadir', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log('Server is ready, listening on port ${PORT}');
+    console.log(`Server is ready, listening on port ${PORT}`);
 });
 
 

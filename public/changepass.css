@@ -68,12 +68,12 @@ body {
 }
 
 .chagePassword_button {
-    margin-left: 42.5%;
+    margin-left: 35%;
     
     
 }
 
-#chagePassword{
+#btn_Change{
     display: block;
     background-color: #D0EE00;
     border: none;
