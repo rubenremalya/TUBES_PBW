@@ -8,7 +8,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views/Page');
 
-app.use(express.static(path.resolve('public')));
+app.use('/public', express.static(path.resolve('public')));
 
 app.get('/', (req, res) => {
     res.render('loginpage');

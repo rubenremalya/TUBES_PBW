@@ -1,0 +1,94 @@
+@font-face {
+    font-family: fonts;
+    src: url(../fonts/MontserratAlternates-Medium.ttf);
+}
+body {
+	font-family: fonts;
+    color: white;
+	background-color: rgb(184, 184, 184);
+}
+.header {
+    border: 2px dashed grey;
+    background-color: #14274E;
+}
+
+.peteemte {
+    text-align: center;
+    font-size: 45px;
+    padding: 15px;
+}
+
+.background_login {
+    padding-top: 3%;
+    padding-bottom: 270px;
+}
+
+.kotak_login {
+    margin-top: 10%;
+    border: solid;
+    padding-bottom: 75px;
+    width: 30%;
+    margin-left: 35%;
+    border-radius: 5%;
+    border-style: groove;
+    background-color: #394867
+}
+
+.Login {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    font-size: 40px;
+}
+
+
+.username {
+    text-align: center;
+    margin: 5%;
+}
+
+.input_user {
+    width: 100%;
+    height: 30px;
+
+}
+
+.password {
+    text-align: center;
+    margin: 5%;
+}
+
+.input_pass {
+    width: 100%;
+    height: 30px;
+}
+
+.login_button {
+    margin-left: 42.5%;
+    
+    
+}
+
+#btn_login{
+    display: block;
+    background-color: #D0EE00;
+    border: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
+}
+#btn_login:hover{
+    background-color: #ceee00b7;
+}
+body {
+    margin: 0;
+    background-color: #e2d6d6;
+    /* background-image: url(../Image/photo-1603484477859-abe6a73f9366.jpg); */
+}
+.user_icon{
+    text-align: center;
+    font-size: 60px;
+    margin: 0;
+    
+}
