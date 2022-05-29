@@ -68,7 +68,7 @@ body {
 }
 
 .chagePassword_button {
-    margin-left: 35%;
+    margin-left: 34.5%;
     
     
 }
@@ -82,7 +82,7 @@ body {
     padding-right: 20px;
     color: black;
 }
-#btn_chagePassword:hover{
+#btn_Change:hover{
     background-color: #ceee00b7;
 }
 body {
