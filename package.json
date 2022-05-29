@@ -1,0 +1,23 @@
+{
+  "name": "tubes_pbw",
+  "version": "1.0.0",
+  "description": "tubes pbw",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubenremalya/TUBES_PBW.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rubenremalya/TUBES_PBW/issues"
+  },
+  "homepage": "https://github.com/rubenremalya/TUBES_PBW#readme",
+  "dependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
