@@ -15,6 +15,11 @@ body {
     padding-bottom: 15px;
 }
 
+#home{
+    color: white;
+    text-decoration: none;
+}
+
 .peteemte {
     float: left;
     font-size: 45px;
