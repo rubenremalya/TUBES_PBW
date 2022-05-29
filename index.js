@@ -1,3 +1,7 @@
+import * as url from 'url';
+    const __filename = url.fileURLToPath(import.meta.url);
+    const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
 import path from 'path';
 import express from 'express';
 
@@ -6,7 +10,9 @@ const app = express();
 
 
 app.set('view engine', 'ejs');
-app.set('views', './views/Page');
+app.set('views', [path.join(__dirname, 'views'), 
+path.join(__dirname, 'views/Page'),
+path.join(__dirname, 'views/Admin')]);
 
 app.use('/public', express.static(path.resolve('public')));
 
