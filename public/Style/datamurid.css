@@ -14,12 +14,36 @@ body {
     overflow: hidden;
     padding-bottom: 15px;
 }
-.logout{
-
-   position:fixed;
-   right:10px;
-   top:5px;
+.tooltip {
+    float: right;
+    display: inline-block;
 }
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 60px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.logout{
+    float: right;
+    font-size: 45px;
+    margin-top: 20px;
+    margin-right: 25px;
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+}
+
 
 #home{
     color: white;
@@ -78,7 +102,7 @@ body {
 
 #btn_generate{
     display: block;
-    background-color: #white;
+    background-color: white;
     border: none;
     padding: 5px;
     padding-left: 20px;
