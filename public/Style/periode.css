@@ -1,0 +1,98 @@
+@font-face {
+    font-family: fonts;
+    src: url(../fonts/MontserratAlternates-Medium.ttf);
+}
+body {
+    font-family: fonts;
+    color: white;
+    background-color: rgb(184, 184, 184);
+}
+.header {
+    background-color: #14274E;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+.logout{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+
+#home{
+    color: white;
+    text-decoration: none;
+}
+
+.peteemte {
+    float: left;
+    font-size: 45px;
+    padding: 15px;
+}
+
+.head_link{
+    margin-top: 82px;
+    margin-left: 15px;
+}
+
+#link1{
+    margin-right: 10px;
+    color: white;
+}
+
+#link2{
+    margin-right: 10px;
+    color: white;
+}
+
+#link3{
+    margin-right: 10px;
+    color: white;
+}
+
+#link4{
+    margin-right: 10px;
+    color: white;
+}
+
+body {
+    margin: 0;
+    background-color: #e2d6d6;
+    /* background-image: url(../Image/photo-1603484477859-abe6a73f9366.jpg); */
+}
+.kapasitas{
+    color: black;
+
+}
+.periode{
+    color: black;
+
+}
+.ptmt{
+    color: black;
+
+}
+.data{
+    color: black;
+}
+
+.generate {
+    margin-left: 34.5%;
+    
+    
+}
+
+#btn_generate{
+    display: block;
+    background-color: #white;
+    border: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
+}
+#btn_generate:hover{
+    background-color: #ceee00b7;
+}

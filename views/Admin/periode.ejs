@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>periode</title>
+     <link rel="stylesheet" href="styleperiode.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/
+     font-awesome.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="header">
+            <div class="peteemte">
+                <a id="home" href="/menu">PeTeEmTe SD Smarty</a>
+            </div>
+            <div class="head_link">
+                <a id="link1" href="/views/Admin/periode.ejs">Periode PTMT</a>
+                <a id="link2" href="/views/Admin/dataMurid.ejs">Data Murid</a>
+                <a id="link3" href="/views/Admin/dataGuru.ejs">Data Guru</a>
+                <a id="link4" href="/views/Admin/daftarHadir.ejs">Daftar Kehadiran</a>
+            </div>
+            
+            
+            <a href="#" class="logout">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+            </a>
+            
+        </div>
+        <div class="background_menu">
+            
+            </div>
+        </div>
+        <div class="kapasitas">
+        <h3>Kapasitas Ruangan</h3>
+        </div>
+
+        <form action="/action_page.php">
+        <label for="cars">Pilih Ruang:</label>
+        <select name="cars" id="cars">
+            <option value="volvo">Ruang A</option>
+            <option value="saab">Ruang B</option>
+            <option value="opel">Ruang C</option>
+        </select>
+        <br>
+
+        <div class="periode">
+        <h3>Periode</h3>
+        </div>
+
+        <div class="data">
+            <table>
+            <tr><td style="padding-bottom: 10px;"><label>Nama Perioda:<td style="padding-bottom: 10px;"><input type="text" name="Fname"></td></label></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Mulai:<td style="padding-bottom: 10px;"><input type="date" name="mulai"></td></label></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Berakhir:<td style="padding-bottom: 10px;"><input type="date" name="akhir" ></td></label></td></tr>
+        </table>
+    </div>
+    <br>
+            
+        
+        <div class="ptmt">
+        <h3>PTMT</h3>
+        </div>
+
+        <div class="data">
+            <table>
+            <tr><td style="padding-bottom: 10px;"><label>Nama Perioda:<td style="padding-bottom: 10px;"><input type="text" name="Fname"></td></label></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Awal Pendaftaran:<td style="padding-bottom: 10px;"><input type="date" name="Adaftar"></td></label></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Akhir Pendaftaran:<td style="padding-bottom: 10px;"><input type="date" name="akhirpendaftaran" ></td></label></td></tr>
+            
+        </table>
+        <div class="generate">
+            <button type="button" id="btn_generate" onclick="goTo()">Submit</button>
+        </div>
+        </div>  
+        <br>
+</body>
+</html>
