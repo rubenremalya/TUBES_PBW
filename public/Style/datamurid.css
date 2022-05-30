@@ -29,7 +29,6 @@ body {
 }
 .tooltip {
     float: right;
-    display: inline-block;
 }
   
 .tooltip .tooltiptext {
@@ -84,22 +83,29 @@ body {
 
 .judul{
     color: black;
-
+    font-size: 20px;
+    margin-left: 50px;
 }
+
 .data{
     color: black;
 }
 
 .generate {
-    margin-left: 34.5%;
-    
+    margin-left: 193px;
     
 }
 body {
     margin: 0;
     background-color: #e2d6d6;
-    /* background-image: url(../Image/photo-1603484477859-abe6a73f9366.jpg); */
-}   
+}  
+
+.data{
+    padding-bottom: 200px;
+    font-size: 20px;
+    margin-left: 50px;
+}
+
 #btn_generate{
     display: block;
     background-color: white;
@@ -108,6 +114,7 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     color: black;
+
 }
 #btn_generate:hover{
     background-color: #ceee00b7;

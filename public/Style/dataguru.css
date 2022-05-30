@@ -28,7 +28,6 @@ body {
 }
 .tooltip {
     float: right;
-    display: inline-block;
 }
   
 .tooltip .tooltiptext {
@@ -84,14 +83,26 @@ body {
 .judul{
     color: black;
     margin-left: 50px;
+    font-size: 20px;
 }
+
 .data{
     color: black;
-    margin-left: 50px;
 }
 
 .generate {
-    margin-left: 34.5%;
+    margin-left: 195px;
+    
+}
+body {
+    margin: 0;
+    background-color: #e2d6d6;
+}  
+
+.data{
+    padding-bottom: 320px;
+    font-size: 20px;
+    margin-left: 50px;
 }
 
 #btn_generate{
@@ -102,7 +113,7 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     color: black;
-    margin-right: 75px;
+
 }
 #btn_generate:hover{
     background-color: #ceee00b7;

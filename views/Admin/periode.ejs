@@ -2,29 +2,26 @@
 <html>
 <head>
     <title>periode</title>
-     <link rel="stylesheet" href="styleperiode.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/
-     font-awesome.min.css">
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/public/Style/periode.css">
+    <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="header">
-            <div class="peteemte">
-                <a id="home" href="/menu">PeTeEmTe SD Smarty</a>
-            </div>
+   <div class="header">
+           <div class="peteemte">
+               <a id="home" href="/menu">PeTeEmTe SD Smarty</a>
+           </div>
+
+           <div class="tooltip">
+               <a href="/loginpage" class="fa fa-power-off fa-3x logout"></a>
+               <span class="tooltiptext">Logout</span>
+           </div>
+
             <div class="head_link">
-                <a id="link1" href="/views/Admin/periode.ejs">Periode PTMT</a>
-                <a id="link2" href="/views/Admin/dataMurid.ejs">Data Murid</a>
-                <a id="link3" href="/views/Admin/dataGuru.ejs">Data Guru</a>
-                <a id="link4" href="/views/Admin/daftarHadir.ejs">Daftar Kehadiran</a>
+                <a id="link1" href="/periode">Periode PTMT</a>
+                <a id="link2" href="/dataMurid">Data Murid</a>
+                <a id="link3" href="/dataGuru">Data Guru</a>
+                <a id="link4" href="/daftarHadir">Daftar Kehadiran</a>
             </div>
-            
-            
-            <a href="#" class="logout">
-            <span class="glyphicon glyphicon-log-out"></span> Log out
-            </a>
             
         </div>
         <div class="background_menu">
@@ -36,7 +33,7 @@
         </div>
 
         <form action="/action_page.php">
-        <label for="cars">Pilih Ruang:</label>
+        <label for="cars" style="color: black; margin-left: 50px; font-size: 18px;">Pilih Ruang:</label>
         <select name="cars" id="cars">
             <option value="volvo">Ruang A</option>
             <option value="saab">Ruang B</option>
@@ -62,7 +59,7 @@
         <h3>PTMT</h3>
         </div>
 
-        <div class="data">
+        <div class="data2">
             <table>
             <tr><td style="padding-bottom: 10px;"><label>Nama Perioda:<td style="padding-bottom: 10px;"><input type="text" name="Fname"></td></label></td></tr>
             <tr><td style="padding-bottom: 10px;"><label>Awal Pendaftaran:<td style="padding-bottom: 10px;"><input type="date" name="Adaftar"></td></label></td></tr>

@@ -127,11 +127,7 @@ body {
     padding-bottom: 20px;
 }
 
-.content_catalog_filter button:hover{
-    background-color: chocolate;
-}
-
-.sorting_category{
+.category{
     padding-top: 200px;
     text-align: center;
     margin: 25px;
