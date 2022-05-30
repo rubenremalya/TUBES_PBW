@@ -14,6 +14,12 @@ body {
     overflow: hidden;
     padding-bottom: 15px;
 }
+.logout{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
 
 #home{
     color: white;
@@ -63,6 +69,22 @@ body {
 .data{
     color: black;
 }
-.generate{
+
+.generate {
+    margin-left: 34.5%;
     
+    
+}
+
+#btn_generate{
+    display: block;
+    background-color: #white;
+    border: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
+}
+#btn_generate:hover{
+    background-color: #ceee00b7;
 }
