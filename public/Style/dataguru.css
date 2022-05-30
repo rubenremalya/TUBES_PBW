@@ -5,7 +5,8 @@
 body {
     font-family: fonts;
     color: white;
-    background-color: rgb(184, 184, 184);
+    background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(8,8,111,1) 14%, rgba(148,148,193,1) 47%, rgba(255,255,255,1) 100%);
 }
 .header {
     background-color: #14274E;
@@ -13,12 +14,6 @@ body {
     border-bottom-right-radius: 30px;
     overflow: hidden;
     padding-bottom: 15px;
-}
-.logout{
-
-   position:fixed;
-   right:10px;
-   top:5px;
 }
 
 #home{
@@ -30,6 +25,35 @@ body {
     float: left;
     font-size: 45px;
     padding: 15px;
+}
+.tooltip {
+    float: right;
+    display: inline-block;
+}
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 60px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.logout{
+    float: right;
+    font-size: 45px;
+    margin-top: 20px;
+    margin-right: 25px;
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
 }
 
 .head_link{
@@ -57,33 +81,28 @@ body {
     color: white;
 }
 
-body {
-    margin: 0;
-    background-color: #e2d6d6;
-    /* background-image: url(../Image/photo-1603484477859-abe6a73f9366.jpg); */
-}
 .judul{
     color: black;
-
+    margin-left: 50px;
 }
 .data{
     color: black;
+    margin-left: 50px;
 }
 
 .generate {
     margin-left: 34.5%;
-    
-    
 }
 
 #btn_generate{
     display: block;
-    background-color: #white;
+    background-color: white;
     border: none;
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
     color: black;
+    margin-right: 75px;
 }
 #btn_generate:hover{
     background-color: #ceee00b7;
