@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>menu</title>
-	 <link rel="stylesheet" href="/public/Style/menu.css">
+    <title>datamurid</title>
+     <link rel="stylesheet" href="styleDG.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/
+     font-awesome.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="header">
+    <div class="header">
             <div class="peteemte">
-                PeTeEmTe SD Smarty
+                <a id="home" href="/menu">PeTeEmTe SD Smarty</a>
             </div>
             <div class="head_link">
                 <a id="link1" href="/views/Admin/periode.ejs">Periode PTMT</a>
@@ -15,10 +20,33 @@
                 <a id="link3" href="/views/Admin/dataGuru.ejs">Data Guru</a>
                 <a id="link4" href="/views/Admin/daftarHadir.ejs">Daftar Kehadiran</a>
             </div>
+            
+            
+            <a href="#" class="logout">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+            </a>
+            
         </div>
         <div class="background_menu">
             
             </div>
         </div>
+        <div class="judul">
+        <h1>Data Guru</h1>
+        </div>
+        <div class="data">
+            <table>
+            <tr><td style="padding-bottom: 10px;"><label>Nomor Induk Pegawai:<td style="padding-bottom: 10px;"><input type="text" name="Fname"></td></label></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Nama Guru:<td style="padding-bottom: 10px;"><input type="text" name="Lname"></td></label></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Kelas:<td style="padding-bottom: 10px;"><input type="text" name="kelas" ></td></label></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Email Guru:<td style="padding-bottom: 10px;"><input type="text" name="email" /></label></td></td></tr>
+            <tr><td style="padding-bottom: 10px;"><label>Ruang:<td style="padding-bottom: 10px;"><input type="text" name="ruang" /></label></td></td></tr>
+            
+            
+        </table>
+        <div class="generate">
+            <button type="button" id="btn_generate" onclick="goTo()">Submit</button>
+        </div>
+        </div>  
 </body>
 </html>
