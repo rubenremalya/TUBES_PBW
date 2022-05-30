@@ -5,7 +5,9 @@
 body {
 	font-family: fonts;
     color: white;
-	background-color: rgb(184, 184, 184);
+	background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(8,8,111,1)
+     14%, rgba(148,148,193,1) 47%, rgba(255,255,255,1) 100%);
 }
 .header {
     border: 2px dashed grey;
