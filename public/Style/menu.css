@@ -29,7 +29,6 @@ body {
 }
 .tooltip {
     float: right;
-    display: inline-block;
 }
   
 .tooltip .tooltiptext {
