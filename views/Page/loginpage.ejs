@@ -7,6 +7,22 @@
         <script src="/public/JS/login.js"></script>
     </head>
     <body>
+        <table border="1">
+            <thread>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+            </thread>
+            <tbody>
+                <% for(const user of users) { %>
+                <tr>
+                    <td><%= user.username_admin %></td>
+                    <td><%= user.password_admin %></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
         <div class="header">
             <div class="peteemte">
                 PeTeEmTe SD Smarty
