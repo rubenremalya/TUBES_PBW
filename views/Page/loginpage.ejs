@@ -7,22 +7,6 @@
         <script src="/public/JS/login.js"></script>
     </head>
     <body>
-        <table border="1">
-            <thread>
-                <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                </tr>
-            </thread>
-            <tbody>
-                <% for(const user of users) { %>
-                <tr>
-                    <td><%= user.username_admin %></td>
-                    <td><%= user.password_admin %></td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
         <div class="header">
             <div class="peteemte">
                 PeTeEmTe SD Smarty
@@ -35,18 +19,20 @@
                      <br>
                  </div>
                  <p class="user_icon"></p>
+                 <form action="/auth" method="post">
                  <div class="username">
-                     <input class="input_user" id="username" type="text" placeholder="Enter username">
+                     <input class="input_user" id="username" required type="text" placeholder="Enter username" >
                  </div>
                 <div class="password">
-                     <input class="input_pass" id="pass" type="text" placeholder="Enter password">
+                     <input class="input_pass" id="pass" type="password" placeholder="Enter password">
                  </div>
                  <div class="login_button">
-                    <button type="button" id="btn_login" onclick="goTo()">Login</button>
+                    <input type="submit" id="btn_login" value="Login" >Login</button>
                  </div>
                  <div class="change_pass">
                      <a href="/ChangePass">Change Password</a>
                  </div>
+                </form>
             </div>
         </div>
     </body>

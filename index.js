@@ -17,6 +17,8 @@ path.join(__dirname, 'views/Admin'),
 path.join(__dirname, 'views/Siswa')]);
 
 app.use('/public', express.static(path.resolve('public')));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'static')));
 app.use(session({
 	secret: 'secret',
 	resave: true,
@@ -70,6 +72,46 @@ app.get('/ChangePass', (req, res) => {
     res.render('ChangePass');
 });
 
+app.post('/auth', function(request, response) {
+	// Capture the input fields
+	let username = request.body.username;
+	let password = request.body.password;
+	// Ensure the input fields exists and are not empty
+	if (username && password) {
+		// Execute SQL query that'll select the account from the database based on the specified username and password
+		connection.query('SELECT * FROM admin WHERE username_admin = ? AND pass_admin = ?', 
+        [username, password], function(error, results, fields) {
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+			// If the account exists
+			if (results.length > 0) {
+				// Authenticate the user
+				request.session.loggedin = true;
+				request.session.username = username;
+				// Redirect to home page
+				response.redirect('/');
+			} else {
+				response.send('Incorrect Username and/or Password!');
+			}			
+			response.end();
+		});
+	} else {
+		response.send('Please enter Username and Password!');
+		response.end();
+	}
+});
+
+app.get('/', function(request, response) {
+	// If the user is loggedin
+	if (request.session.loggedin) {
+		// Output username
+		response.send('Welcome back, ' + request.session.username + '!');
+	} else {
+		// Not logged in
+		response.send('Please login to view this page!');
+	}
+	response.end();
+});
 
 //--------- ADMIN -------
 app.get('/menu', (req, res) => {

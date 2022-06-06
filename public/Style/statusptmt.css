@@ -139,8 +139,8 @@ body {
     font-size: 20px;
     margin-left: 50px;
 }
-.perioda{
-    width: 100%;
+select{
+    width: 200px;
     height: 30px;
 }
 form{padding-bottom: 580px;}
