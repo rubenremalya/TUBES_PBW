@@ -49,6 +49,8 @@ const getUsers = conn => {
     })
 }
 
+
+//--------- LOGIN -------
 app.get('/', async (req, res) => {
     const conn = await dbConnect();
     const users = await getUsers(conn);
@@ -58,17 +60,49 @@ app.get('/', async (req, res) => {
     });
 });
 
+app.post('/auth', function(request, response) {
+    let username = request.body.username_admin;
+	let password = request.body.password;
+    if (username && password) {
+        connection.query('SELECT * FROM admin WHERE username_admin = ? AND pass_admin = ?', 
+        [username_admin, pass_admin], function(error, results, fields) {
+            if (error) throw error;
+            if (results.length > 0) {
+                request.session.loggedin = true;
+				request.session.username_admin = username_admin;
+                response.redirect('/home');
+            } else {
+				response.send('Incorrect Username and/or Password!');
+			}			
+			response.end();
+		});
+	} else {
+		response.send('Please enter Username and Password!');
+		response.end();
+	}
+});
+
+app.get('/home', function(request, response) {
+	// If the user is loggedin
+	if (request.session.loggedin) {
+		// Output username
+		response.send('Welcome back, ' + request.session.username_admin + '!');
+	} else {
+		// Not logged in
+		response.send('Please login to view this page!');
+	}
+	response.end();
+});
+
 app.get('/ChangePass', (req, res) => {
     res.render('ChangePass');
 });
 
+
+//--------- ADMIN -------
 app.get('/menu', (req, res) => {
     res.render('menu');
 });
-
-app.get('/menusiswa', (req, res) => {
-    res.render('menusiswa');
-})
 
 app.get('/periode', async (req, res) => {
     const conn = await dbConnect();
@@ -91,6 +125,23 @@ app.get('/daftarHadir', (req, res) => {
     res.render('daftarHadir');
 });
 
+
+//--------- SISWA -------
+app.get('/menusiswa', (req, res) => {
+    res.render('menusiswa');
+})
+
+app.get('/datasiswa', (req, res) => {
+    res.render('datasiswa');
+})
+
+app.get('/dataperiode', (req, res) => {
+    res.render('dataperiode');
+})
+
+app.get('/statusptmt', (req, res) => {
+    res.render('statusptmt');
+})
 app.listen(PORT, () => {
     console.log(`Server is ready, listening on port ${PORT}`);
 });
