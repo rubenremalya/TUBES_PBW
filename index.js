@@ -5,6 +5,7 @@ import * as url from 'url';
 import path from 'path';
 import express from 'express';
 import mysql from 'mysql';
+import session from 'express-session';
 
 const PORT = 8080;
 const app = express();
@@ -16,6 +17,11 @@ path.join(__dirname, 'views/Admin'),
 path.join(__dirname, 'views/Siswa')]);
 
 app.use('/public', express.static(path.resolve('public')));
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
 
 const pool = mysql.createPool({
     user: 'root',
@@ -58,40 +64,6 @@ app.get('/', async (req, res) => {
     res.render('loginpage', {
         users
     });
-});
-
-app.post('/auth', function(request, response) {
-    let username = request.body.username_admin;
-	let password = request.body.password;
-    if (username && password) {
-        connection.query('SELECT * FROM admin WHERE username_admin = ? AND pass_admin = ?', 
-        [username_admin, pass_admin], function(error, results, fields) {
-            if (error) throw error;
-            if (results.length > 0) {
-                request.session.loggedin = true;
-				request.session.username_admin = username_admin;
-                response.redirect('/home');
-            } else {
-				response.send('Incorrect Username and/or Password!');
-			}			
-			response.end();
-		});
-	} else {
-		response.send('Please enter Username and Password!');
-		response.end();
-	}
-});
-
-app.get('/home', function(request, response) {
-	// If the user is loggedin
-	if (request.session.loggedin) {
-		// Output username
-		response.send('Welcome back, ' + request.session.username_admin + '!');
-	} else {
-		// Not logged in
-		response.send('Please login to view this page!');
-	}
-	response.end();
 });
 
 app.get('/ChangePass', (req, res) => {
