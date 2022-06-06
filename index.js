@@ -12,7 +12,8 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', [path.join(__dirname, 'views'), 
 path.join(__dirname, 'views/Page'),
-path.join(__dirname, 'views/Admin')]);
+path.join(__dirname, 'views/Admin'),
+path.join(__dirname, 'views/Siswa')]);
 
 app.use('/public', express.static(path.resolve('public')));
 
@@ -64,6 +65,10 @@ app.get('/ChangePass', (req, res) => {
 app.get('/menu', (req, res) => {
     res.render('menu');
 });
+
+app.get('/menusiswa', (req, res) => {
+    res.render('menusiswa');
+})
 
 app.get('/periode', async (req, res) => {
     const conn = await dbConnect();
