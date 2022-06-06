@@ -19,7 +19,7 @@ app.use('/public', express.static(path.resolve('public')));
 const pool = mysql.createPool({
     user: 'root',
     password: '',
-    database: 'dtbs_PTMT',
+    database: 'dtbs_ptmt',
     host: 'localhost',
     connectionLimit: 10
 });
