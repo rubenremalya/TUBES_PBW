@@ -28,4 +28,12 @@ body {
 .tooltip {
     float: right;
 }
-  
+.garis_vertikal{
+    border-left: 1px black solid;
+    height: 170px;
+    margin-left: 250px;
+    padding-bottom: 420px;
+    }
+   .icon{
+       margin-left: 65px;
+   }
