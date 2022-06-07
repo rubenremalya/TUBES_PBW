@@ -15,7 +15,7 @@ app.set('views', [path.join(__dirname, 'views'),
 path.join(__dirname, 'views/Page'),
 path.join(__dirname, 'views/Admin'),
 path.join(__dirname, 'views/Siswa'),
-path.join(__dirname, 'views/Guru');
+path.join(__dirname, 'views/Guru')]);
 
 app.use('/public', express.static(path.resolve('public')));
 app.use(express.json());
