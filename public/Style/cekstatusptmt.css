@@ -1,0 +1,31 @@
+@font-face {
+    font-family: fonts;
+    src: url(../fonts/MontserratAlternates-Medium.ttf);
+}
+body {
+    font-family: fonts;
+    color: white;
+    background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(8,8,111,1) 14%, rgba(148,148,193,1) 47%, rgba(255,255,255,1) 100%);
+}
+.header {
+    background-color: #14274E;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+#home{
+    color: white;
+    text-decoration: none;
+}
+
+.peteemte {
+    float: left;
+    font-size: 45px;
+    padding: 15px;
+}
+.tooltip {
+    float: right;
+}
+  
