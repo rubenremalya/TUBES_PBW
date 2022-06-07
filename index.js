@@ -17,6 +17,7 @@ path.join(__dirname, 'views/Admin'),
 path.join(__dirname, 'views/Siswa')]);
 
 app.use('/public', express.static(path.resolve('public')));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(session({
@@ -59,23 +60,15 @@ const getUsers = conn => {
 
 
 //--------- LOGIN -------
-app.get('/', async (req, res) => {
-    const conn = await dbConnect();
-    const users = await getUsers(conn);
-    conn.release();
-    res.render('loginpage', {
-        users
-    });
+app.get('/', function (req, res) {
+	// Render login template
+	res.render('loginpage');
 });
 
-app.get('/ChangePass', (req, res) => {
-    res.render('ChangePass');
-});
-
-app.post('/auth', function(request, response) {
+app.post('/auth', function(req, res) {
 	// Capture the input fields
-	let username = request.body.username;
-	let password = request.body.password;
+	let username = req.body.username;
+	let password = req.body.password;
 	// Ensure the input fields exists and are not empty
 	if (username && password) {
 		// Execute SQL query that'll select the account from the database based on the specified username and password
@@ -86,32 +79,42 @@ app.post('/auth', function(request, response) {
 			// If the account exists
 			if (results.length > 0) {
 				// Authenticate the user
-				request.session.loggedin = true;
-				request.session.username = username;
+				req.session.loggedin = true;
+				req.session.username = username;
 				// Redirect to home page
-				response.redirect('/');
+				res.redirect('/menu');
 			} else {
-				response.send('Incorrect Username and/or Password!');
+				res.send('Incorrect Username and/or Password!');
 			}			
-			response.end();
+			res.end();
 		});
 	} else {
-		response.send('Please enter Username and Password!');
-		response.end();
+		res.send('Please enter Username and Password!');
+		res.end();
 	}
 });
 
-app.get('/', function(request, response) {
-	// If the user is loggedin
-	if (request.session.loggedin) {
+app.get('/menu', async (req, res) => {
+    const conn = await dbConnect();
+    const users = await getUsers(conn);
+    conn.release();
+    if (req.session.loggedin) {
 		// Output username
-		response.send('Welcome back, ' + request.session.username + '!');
+		res.send('Welcome back, ' + req.session.username + '!');
 	} else {
 		// Not logged in
-		response.send('Please login to view this page!');
+		res.send('Please login to view this page!');
 	}
-	response.end();
+	res.end();
+    res.render('loginpage', {
+        users
+    });
 });
+
+app.get('/ChangePass', (req, res) => {
+    res.render('ChangePass');
+});
+
 
 //--------- ADMIN -------
 app.get('/menu', (req, res) => {
