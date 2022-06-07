@@ -15,7 +15,8 @@ app.set('views', [path.join(__dirname, 'views'),
 path.join(__dirname, 'views/Page'),
 path.join(__dirname, 'views/Admin'),
 path.join(__dirname, 'views/Siswa'),
-path.join(__dirname, 'views/Guru')]);
+path.join(__dirname, 'views/Guru'),
+path.join(__dirname, 'views/Kepsek')]);
 
 app.use('/public', express.static(path.resolve('public')));
 app.use(express.json());
@@ -176,6 +177,20 @@ app.get('/infoguru', (req, res) => {
 
 app.get('/daftarsiswa', (req, res) => {
     res.render('daftarsiswa');
+});
+
+
+//--------- KEPSEK -------
+app.get('/menukepsek', (req, res) => {
+    res.render('menukepsek');
+})
+
+app.get('/grafiktrendptmt', (req, res) => {
+    res.render('grafiktrendptmt');
+})
+
+app.get('/laporan', (req, res) => {
+    res.render('laporan');
 });
 
 
