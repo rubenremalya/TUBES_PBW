@@ -1,0 +1,51 @@
+@font-face {
+    font-family: fonts;
+    src: url(../fonts/MontserratAlternates-Medium.ttf);
+}
+body {
+	font-family: fonts;
+    color: white;
+	background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(8,8,111,1) 14%, rgba(148,148,193,1) 47%, rgba(255,255,255,1) 100%);
+    margin: 0;
+}
+.header {
+    border: 2px grey;
+    background-color: #14274E;
+}
+
+.peteemte {
+    text-align: center;
+    font-size: 45px;
+    padding: 15px;
+}
+
+.inform{
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 25pt;
+    border-style: groove;
+    padding: 50px;
+    margin: auto;
+    background-color: rgba(255, 0, 0, 0.507);
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 295px;
+    font-weight: bold;
+}
+
+#btn_login{
+    display: block;
+    background-color: white;
+    border: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
+    margin: auto;
+}
+#btn_login:hover{
+    background-color: #ceee00b7;
+}

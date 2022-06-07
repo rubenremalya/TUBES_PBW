@@ -91,6 +91,10 @@ body {
     color: black;
     margin-left: 50px;
 }
+
+#inputruang{
+    width: 3%;
+}
 .periode{
     color: black;
     margin-left: 50px;
