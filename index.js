@@ -16,7 +16,8 @@ path.join(__dirname, 'views/Page'),
 path.join(__dirname, 'views/Admin'),
 path.join(__dirname, 'views/Siswa'),
 path.join(__dirname, 'views/Guru'),
-path.join(__dirname, 'views/Kepsek')]);
+path.join(__dirname, 'views/Kepsek'),
+path.join(__dirname, 'views/Satpam')]);
 
 app.use('/public', express.static(path.resolve('public')));
 app.use(express.json());
@@ -168,5 +169,9 @@ app.get('/laporan', (req, res) => {
 });
 
 
+//--------- SATPAM -------
+app.get('/cekstatusptmt', (req, res) => {
+    res.render('cekstatusptmt');
+})
 
 

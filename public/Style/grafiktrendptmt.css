@@ -159,3 +159,15 @@ tr:nth-child(even) {
   background-color: #dddddd;
   color: black;
 }
+
+#judul1{
+    margin-left: 200px;
+    color: black;
+    font-weight: bold;
+}
+
+#judul2{
+    margin-left: 200px;
+    color: black;
+    font-weight: bold;
+}
