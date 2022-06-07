@@ -170,8 +170,8 @@ app.get('/menuguru', (req, res) => {
     res.render('menuguru');
 })
 
-app.get('/dataperiodaptmt', (req, res) => {
-    res.render('dataperiodaptmt');
+app.get('/infoguru', (req, res) => {
+    res.render('infoguru');
 })
 
 app.get('/daftarsiswa', (req, res) => {
