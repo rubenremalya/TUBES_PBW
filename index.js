@@ -161,4 +161,19 @@ app.listen(PORT, () => {
 });
 
 
+//--------- GURU -------
+app.get('/menuguru', (req, res) => {
+    res.render('menuguru');
+})
+
+app.get('/dataperiodaptmt', (req, res) => {
+    res.render('dataperiodaptmt');
+})
+
+app.get('/daftarsiswa', (req, res) => {
+    res.render('daftarsiswa');
+});
+
+
+
 

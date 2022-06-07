@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>dataperiode</title>
+    <link rel="stylesheet" href="/public/Style/statusptmt.css">
+    <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+   <div class="header">
+           <div class="peteemte">
+               <a id="home" href="/menu">Sekolah Dasar Smarty</a>
+           </div>
+
+           <div class="tooltip">
+               <a href="/" class="fa fa-power-off fa-3x logout"></a>
+               <span class="tooltiptext">Logout</span>
+           </div>
+
+            <div class="head_link">
+                <a id="link1" href="/periode">Data Siswa</a>
+                <a id="link2" href="/dataMurid">Perioda PTMT</a>
+                <a id="link3" href="/dataGuru">Status PTMT</a>
+                
+            </div>
+            
+        </div>
+        <div class="background_menu">
+            
+            </div>
+        </div>
+        <div class="kapasitas">
+        <h1>Daftar Perioda PTMT Siswa</h1><br>  
+        </div>
+
+        <form action="/action_page.php">
+        <label for="perioda" style="color: black; margin-left: 50px; font-size: 25px;">Perioda:</label>
+        <select name="perioda" id="perioda">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <br><br><br>
+        <div class="isi">
+        Perioda PTMT : 1<br><br>
+        Tanggal Mulai : 17 Agustus 2022<br><br><br>
+        Tanggal Akhir : 18 Agustus 2022<br><br><br>
+        Ketentuan PTMT : Bagi siswa yang memiliki nomor induk siswa dengan angka akhir genap, akan hadir 
+                        pada tanggal genap saja.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Begitu juga sebaliknya untuk yang memiliki angka akhir 
+                        ganjil pada nomor induk siswa, akan hadir pada tanggal ganjil saja.
+        </div>
+        </form>
+</body>
+</html>
