@@ -36,34 +36,9 @@ const connection = mysql.createConnection({
     connectionLimit: 10
 });
 
-const dbConnect = () => {
-    return new Promise((resolve, reject) => {
-        pool.getConnection((err, conn) => {
-            if(err) {
-                reject(err);
-            } else{
-                resolve(conn);
-            }
-        })
-    })
-}
-
-const getUsers = conn => {
-    return new Promise((resolve, reject) => {
-        conn.query('SELECT username_admin FROM admin', (err, result) => {
-            if(err) {
-                reject(err);
-            } else{
-                resolve(result);
-            }
-        })
-    })
-}
-
 
 //--------- LOGIN -------
 app.get('/', function (req, res) {
-	// Render login template
 	res.render('loginpage');
 });
 
@@ -72,10 +47,8 @@ app.get('/', async (req, res) => {
     const users = await getUsers(conn);
     conn.release();
     if (req.session.loggedin) {
-		// Output username
 		res.send('Welcome back, ' + req.session.username + '!');
 	} else {
-		// Not logged in
 		res.send('Please login to view this page!');
 	}
 	res.end();
@@ -85,20 +58,14 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/auth', function(req, res) {
-	// Capture the input fields
 	let username = req.body.username;
 	let password = req.body.password;
-	// Ensure the input fields exists and are not empty
 	if (username && password) {
 		connection.query('SELECT * FROM admin WHERE username_admin = ? AND pass_admin = ?', [username, password], function(error, results, fields) {
-			// If there is an issue with the query, output the error
 			if (error) throw error;
-			// If the account exists
 			if (results.length > 0) {
-				// Authenticate the user
 				req.session.loggedin = true;
 				req.session.username = username;
-				// Redirect to home page
 				res.redirect('/menu');
 			} else {
 				res.redirect('/incorrect');
@@ -126,6 +93,17 @@ app.get('/menu', (req, res) => {
 
 app.get('/periode', async (req, res) => {
     res.render('periode')
+});
+
+app.post('/periode', function(req, res) {
+    let comm = "INSERT INTO periode SET ?";
+    let isi = {kapasitas: req.body.jumlah, nama_perioda: req.body.Fname, tanggal_mulai: req.body.mulai,
+        tanggal_akhir: req.body.akhir, nama_perioda2: req.body.Fname2, tgl_mulaidaftar: req.body.Mdaftar, tgl_akhirdaftar: req.body.Adaftar};
+		connection.query(comm, isi, function(error, results, fields) {
+			if (error) throw error;
+			res.redirect('/periode');
+			res.end();
+		});
 });
 
 app.get('/dataMurid', (req, res) => {
