@@ -85,7 +85,7 @@ body {
     background-color: #e2d6d6;
 }
 #perioda{
-    margin-left: 32px;
+    margin-left: 0px;
 }
 #hari{
     margin-left: 32px;
@@ -94,11 +94,7 @@ body {
     color: black;
     margin-left: 50px;
 }
-.periode{
-    color: black;
-    margin-left: 50px;
 
-}
 .ptmt{
     color: black;
     margin-left: 50px;
@@ -144,3 +140,22 @@ select{
     height: 25px;
 }
 form{padding-bottom: 580px;}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  color: black;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: black;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+  color: black;
+}
