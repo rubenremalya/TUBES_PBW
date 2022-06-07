@@ -1,0 +1,123 @@
+@font-face {
+    font-family: fonts;
+    src: url(../fonts/MontserratAlternates-Medium.ttf);
+}
+body {
+    font-family: fonts;
+    color: white;
+    background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(8,8,111,1) 14%, rgba(148,148,193,1) 47%, rgba(255,255,255,1) 100%);
+}
+
+.header {
+    background-color: #14274E;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+
+#home{
+    color: white;
+    text-decoration: none;
+}
+
+.peteemte {
+    float: left;
+    font-size: 45px;
+    padding: 15px;
+}
+.tooltip {
+    float: right;
+}
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 60px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.logout{
+    float: right;
+    font-size: 45px;
+    margin-top: 20px;
+    margin-right: 25px;
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+}
+
+#btn1{
+    margin: 20px;
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 15px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 25px;
+    background-color: #394867;
+    color: white;
+    cursor:grab;
+}
+#icon1{
+    padding: 10px;
+    padding-bottom: 20px;
+}
+#btn2{
+    margin: 20px;
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 15px;
+    padding-top: 30px;
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-bottom: 20px;
+    font-size: 25px;
+    background-color: #394867;
+    color: white;
+    cursor:grab;
+}
+#icon2{
+    padding: 10px;
+    padding-bottom: 20px;
+}
+#btn3{
+    margin: 20px;
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 15px;
+    padding-top: 30px;
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-bottom: 20px;
+    font-size: 25px;
+    background-color: #394867;
+    color: white;
+    cursor:grab;
+}
+#icon3{
+    padding: 10px;
+    padding-bottom: 20px;
+}
+
+.category{
+    padding-top: 200px;
+    text-align: center;
+    margin: 25px;
+    padding-bottom: 250px;
+}
+
+body {
+    margin: 0;
+    background-color: #e2d6d6;
+    /* background-image: url(../Image/photo-1603484477859-abe6a73f9366.jpg); */
+}

@@ -1,0 +1,161 @@
+@font-face {
+    font-family: fonts;
+    src: url(../fonts/MontserratAlternates-Medium.ttf);
+}
+body {
+    font-family: fonts;
+    color: white;
+    background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(8,8,111,1) 14%, rgba(148,148,193,1) 47%, rgba(255,255,255,1) 100%);
+}
+.header {
+    background-color: #14274E;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+
+#home{
+    color: white;
+    text-decoration: none;
+}
+
+.peteemte {
+    float: left;
+    font-size: 45px;
+    padding: 15px;
+}
+.tooltip {
+    float: right;
+}
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 60px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.logout{
+    float: right;
+    font-size: 45px;
+    margin-top: 20px;
+    margin-right: 25px;
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+}
+
+.head_link{
+    margin-top: 82px;
+    margin-left: 15px;
+}
+
+#link1{
+    margin-right: 10px;
+    color: white;
+}
+
+#link2{
+    margin-right: 10px;
+    color: white;
+}
+
+#link3{
+    margin-right: 10px;
+    color: white;
+}
+
+#link4{
+    margin-right: 10px;
+    color: white;
+}
+
+body {
+    margin: 0;
+    background-color: #e2d6d6;
+}
+#perioda{
+    margin-left: 0px;
+}
+#hari{
+    margin-left: 32px;
+}
+.kapasitas{
+    color: black;
+    margin-left: 50px;
+}
+
+.ptmt{
+    color: black;
+    margin-left: 50px;
+
+}
+.data{
+    font-size: 20px;
+    margin-left: 50px;
+    color: black;
+}
+
+.data2{
+    padding-bottom: 270px;
+    font-size: 20px;
+    margin-left: 50px;
+    color: black;
+}
+.generate {
+    margin-left: 158px;
+    
+    
+}
+
+#btn_generate{
+    display: block;
+    background-color: white;
+    border: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
+}
+#btn_generate:hover{
+    background-color: #ceee00b7;
+}
+.isi{
+    color: black;
+    font-size: 20px;
+    margin-left: 50px;
+}
+select{
+    width: 200px;
+    height: 25px;
+}
+form{padding-bottom: 580px;}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  color: black;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: black;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+  color: black;
+}
