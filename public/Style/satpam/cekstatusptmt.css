@@ -29,6 +29,7 @@ body {
 .tooltip {
     float: right;
 }
+<<<<<<< HEAD
   
 .tooltip .tooltiptext {
     visibility: hidden;
@@ -89,6 +90,9 @@ body {
 
 
 }
+=======
+
+>>>>>>> 7d714819cdbbd8730ec6de06ef8ca31d89da7455
 .garis_vertikal{
  border-left: 1px black solid;
  height: 100px;
@@ -101,6 +105,7 @@ body {
 }
 .namasiswa{
     margin-left: 250px;
+<<<<<<< HEAD
     color: black;
     font-size: 25px;
 }
@@ -148,3 +153,24 @@ tr:nth-child(even) {
     margin-left: 580px;
 }
 form{padding-bottom: 220px;}
+
+    padding-bottom: 420px;
+    }
+   .icon{
+       margin-left: 65px;
+   }
+.logout{
+    float: right;
+    font-size: 45px;
+    margin-top: 20px;
+    margin-right: 25px;
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+}
+.head_link{
+    margin-top: 82px;
+    margin-left: 15px;
+}
+
+

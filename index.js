@@ -22,6 +22,7 @@ path.join(__dirname, 'views/Guru'),
 path.join(__dirname, 'views/Kepsek'),
 path.join(__dirname, 'views/Satpam')]);
 
+
 app.use('/public', express.static(path.resolve('public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -181,7 +182,7 @@ app.get('/cekstatusptmt', (req, res) => {
 //---------- EXCEL ----------//
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-    cb(null, __dirname + '/uploads/')
+    cb(null, __dirname + '/public/uploads/')
     },
     filename: (req, file, cb) => {
     cb(null, file.fieldname + "-" + Date.now() + "-" + file.originalname)
@@ -189,10 +190,10 @@ const storage = multer.diskStorage({
     });
     const upload = multer({storage: storage});
     app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/login.html');
+    res.sendFile(__dirname + '/datamurid.ejs');
     });
     app.post('/uploadfile', upload.single("uploadfile"), (req, res) =>{
-    importExcelData2MySQL(__dirname + '/uploads/' + req.file.filename);
+    importExcelData2MySQL(__dirname + '/public/uploads/' + req.file.filename);
     console.log(res);
     });
     
@@ -201,7 +202,7 @@ const storage = multer.diskStorage({
     console.log(rows);
     rows.shift();
     
-    let query = 'INSERT INTO customer (id, address, name, age) VALUES ?';
+    let query = 'INSERT INTO siswa (NIS    id_satpam    id_ruang    nama_siswa    status_PTMT    bukti_vaksin    pass_siswa    username_siswa    tanggal_vaksin    vaksin_ke    email_ortu    nama_ortu) VALUES ?';
     connection.query(query, [rows], (error, response) => {
     console.log(error || response);
     });
