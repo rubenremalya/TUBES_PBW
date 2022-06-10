@@ -2,9 +2,9 @@
 <html>
 <head>
     <title>datasiswa</title>
-    <link rel="stylesheet" href="/public/Style/siswa/statusptmt.css">
+    <link rel="stylesheet" href="/public/Style/siswa/datasiswa.css">
     <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
-    
+    <script src="/public/JS/siswa/datasiswa.js"></script>
 </head>
 <body>
    <div class="header">
@@ -34,17 +34,20 @@
 
         <form action="/action_page.php">
         <label for="perioda" style="color: black; margin-left: 50px; font-size: 25px;">Vaksinasi ke:</label>
-        <select name="perioda" id="perioda">
+        <select name="perioda" id="perioda" onchange="move()">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
         </select>
         <br><br><br>
         <div class="data">
-            Tanggal Vaksin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="date"><br><br>
-            Scan/Foto<br>Sertifikat Vaksin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" id="myFile" name="filename" name="Fname"><br><br><br>
-            
-            
+            Tanggal Vaksin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="date" onchange="move2()"><br><br>
+            Scan/Foto<br>Sertifikat Vaksin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" id="myFile" name="filename" name="Fname" onchange="move3()"><br><br><br>
+        </div>
+        <div id="myProgress">
+            <div id="myBar"></div>
+        </div>
+        <br>
         <div class="generate">
             <button type="button" id="btn_generate" onclick="goTo()">Next</button>
         </div>

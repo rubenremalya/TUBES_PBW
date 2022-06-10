@@ -148,3 +148,17 @@ form{padding-bottom: 580px;}
 .date{
     margin-left :50px;
 }
+
+#myProgress {
+    margin-left: 48px;
+    width: 12%;
+    background-color: #ddd;
+    border-radius: 10pt;
+  }
+  
+  #myBar {
+    width: 1%;
+    height: 20px;
+    background-color: #04AA6D;
+    border-radius: 10pt;
+  }
