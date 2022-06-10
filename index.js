@@ -6,6 +6,9 @@ import path from 'path';
 import express from 'express';
 import mysql from 'mysql';
 import session from 'express-session';
+import multer from 'multer';
+import readXlsxFile from 'read-excel-file';
+import bodyParser from 'body-parser';
 
 const PORT = 8080;
 const app = express();
@@ -169,9 +172,38 @@ app.get('/laporan', (req, res) => {
 });
 
 
-//--------- SATPAM -------
+//--------- SATPAM -------//
 app.get('/cekstatusptmt', (req, res) => {
     res.render('cekstatusptmt');
 })
 
 
+//---------- EXCEL ----------//
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+    cb(null, __dirname + '/uploads/')
+    },
+    filename: (req, file, cb) => {
+    cb(null, file.fieldname + "-" + Date.now() + "-" + file.originalname)
+    }
+    });
+    const upload = multer({storage: storage});
+    app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/login.html');
+    });
+    app.post('/uploadfile', upload.single("uploadfile"), (req, res) =>{
+    importExcelData2MySQL(__dirname + '/uploads/' + req.file.filename);
+    console.log(res);
+    });
+    
+    function importExcelData2MySQL(filePath){
+    readXlsxFile(filePath).then((rows) => {
+    console.log(rows);
+    rows.shift();
+    
+    let query = 'INSERT INTO customer (id, address, name, age) VALUES ?';
+    connection.query(query, [rows], (error, response) => {
+    console.log(error || response);
+    });
+    });
+    }
