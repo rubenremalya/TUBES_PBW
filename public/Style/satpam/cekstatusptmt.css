@@ -28,6 +28,7 @@ body {
 .tooltip {
     float: right;
 }
+
 .garis_vertikal{
     border-left: 1px black solid;
     height: 170px;
@@ -37,3 +38,17 @@ body {
    .icon{
        margin-left: 65px;
    }
+.logout{
+    float: right;
+    font-size: 45px;
+    margin-top: 20px;
+    margin-right: 25px;
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+}
+.head_link{
+    margin-top: 82px;
+    margin-left: 15px;
+}
+
