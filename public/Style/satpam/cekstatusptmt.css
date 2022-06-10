@@ -15,6 +15,7 @@ body {
     overflow: hidden;
     padding-bottom: 15px;
 }
+
 #home{
     color: white;
     text-decoration: none;
@@ -28,12 +29,122 @@ body {
 .tooltip {
     float: right;
 }
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 60px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.logout{
+    float: right;
+    font-size: 45px;
+    margin-top: 20px;
+    margin-right: 25px;
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+}
+
+.head_link{
+    margin-top: 82px;
+    margin-left: 15px;
+}
+
+#link1{
+    margin-right: 10px;
+    color: white;
+}
+
+#link2{
+    margin-right: 10px;
+    color: white;
+}
+
+#link3{
+    margin-right: 10px;
+    color: white;
+}
+
+#link4{
+    margin-right: 10px;
+    color: white;
+}
+
+body {
+    margin: 0;
+    background-color: #e2d6d6;
+}
+.kapasitas{
+    color: black;
+
+
+}
 .garis_vertikal{
-    border-left: 1px black solid;
-    height: 170px;
+ border-left: 1px black solid;
+ height: 100px;
+ margin-left: 950px;
+ padding-bottom: 300px;
+
+ }
+.icon{
+    margin-left: 65px;
+}
+.namasiswa{
     margin-left: 250px;
-    padding-bottom: 420px;
-    }
-   .icon{
-       margin-left: 65px;
-   }
+    color: black;
+    font-size: 25px;
+}
+
+.table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  color: black;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: black;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+  color: black;
+}
+
+#btn_generate{
+    display: block;
+    background-color: white;
+    border: none;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
+}
+#btn_generate:hover{
+    background-color: #ceee00b7;
+}
+.judul{
+    text-align: center;
+    color: black;
+}
+.NIS{
+    margin-left: 500px;
+
+}
+.generate{
+    margin-left: 580px;
+}
+form{padding-bottom: 220px;}
