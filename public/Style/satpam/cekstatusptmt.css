@@ -101,10 +101,17 @@ body {
 
  }
 .icon{
-    margin-left: 65px;
+    margin-right: 800px;
+    margin-bottom: 300px;
+    float: right;
+    position: relative;
+    bottom: 200px;   
 }
 .namasiswa{
-    margin-left: 250px;
+    float: right;
+    position: relative;
+    left: 300px;
+    bottom: 200px;
     color: black;
     font-size: 25px;
 }
@@ -145,11 +152,14 @@ tr:nth-child(even) {
     color: black;
 }
 .NIS{
-    margin-left: 500px;
-
+    position: relative;
+    left: 650px;
+    top: 100px;
 }
 .generate{
-    margin-left: 580px;
+    position: relative;
+    left: 730px;
+    top: 100px;
 }
 form{padding-bottom: 220px;}
 
@@ -171,5 +181,11 @@ form{padding-bottom: 220px;}
     margin-top: 82px;
     margin-left: 15px;
 }
-
+.vl {
+  border-left: 1px solid black;
+  height: 300px;
+  position: relative;
+  left: 930px;
+  bottom: 230px;
+}
 
