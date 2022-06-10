@@ -219,3 +219,19 @@ const storage = multer.diskStorage({
     });
     });
     }
+
+
+    var obj = {};
+app.get('/data', function(req, res){
+
+    connection.query('SELECT * FROM users', function(err, result) {
+
+        if(err){
+            throw err;
+        } else {
+            obj = {print: result};
+            res.render('print', obj);                
+        }
+    });
+
+});
