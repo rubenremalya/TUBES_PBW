@@ -119,6 +119,17 @@ app.get('/dataGuru', (req, res) => {
     res.render('dataGuru');
 });
 
+app.post('/guru', function(req, res) {
+    let comm = "INSERT INTO guru SET ?";
+    let isi = {NIP: req.body.Fname, nama_guru: req.body.Lname, username_guru: req.body.email, 
+        pass_guru: req.body.Fname, kelas: req.body.kelas};
+		connection.query(comm, isi, function(error, results, fields) {
+			if (error) throw error;
+			res.redirect('/dataguru');
+			res.end();
+		});
+});
+
 app.get('/daftarHadir', (req, res) => {
     res.render('daftarHadir');
 });
