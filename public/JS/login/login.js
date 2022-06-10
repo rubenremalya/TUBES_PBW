@@ -1,3 +1,3 @@
 function goTo() {
-    window.location.href="/";  
+    window.location.href="";  
   }
