@@ -65,22 +65,44 @@ app.get('/', async (req, res) => {
 app.post('/auth', function(req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
+    let usernamesiswa = req.body.username;
+    let passwordsiswa = req.body.password;
+
 	if (username && password) {
-		connection.query('SELECT * FROM admin WHERE username_admin = ? AND pass_admin = ?', [username, password], function(error, results, fields) {
+		connection.query('SELECT * FROM admin WHERE username_admin = ? AND pass_admin = ?', 
+        [username, password], function(error, results, fields) {
 			if (error) throw error;
 			if (results.length > 0) {
 				req.session.loggedin = true;
 				req.session.username = username;
 				res.redirect('/menu');
-			} else {
+			} 
+            
+            else {
 				res.redirect('/incorrect');
 			}			
 			res.end();
 		});
-	} else {
-		res.redirect('/');
-		res.end();
+	} else if(usernamesiswa && passwordsiswa){
+        connection.query('SELECT * FROM siswa WHERE username_siswa = ? AND pass_siswa = ?', 
+        [usernamesiswa, passwordsiswa], function(error, results, fields) {
+			if (error) throw error;
+			if (results.length > 0) {
+				req.session.loggedin = true;
+				req.session.usernamesiswa = usernamesiswa;
+				res.redirect('/menusiswa');
+			} 
+            
+            else {
+				res.redirect('/incorrect');
+			}			
+			res.end();
+		});
+		
 	}
+    else{res.redirect('/');
+		res.end();
+}
 });
 
 app.get('/ChangePass', (req, res) => {
@@ -220,9 +242,8 @@ const storage = multer.diskStorage({
     });
     }
 
-
     var obj = {};
-app.get('/data', function(req, res){
+app.get('/statusptmt', function(req, res){
 
     connection.query('SELECT * FROM users', function(err, result) {
 
@@ -235,3 +256,5 @@ app.get('/data', function(req, res){
     });
 
 });
+
+//haloo
