@@ -29,6 +29,7 @@ body {
 .tooltip {
     float: right;
 }
+<<<<<<< HEAD
   
 .tooltip .tooltiptext {
     visibility: hidden;
@@ -89,25 +90,34 @@ body {
 
 
 }
+
+
+
 .garis_vertikal{
  border-left: 1px black solid;
- height: 170px;
- margin-left: 250px;
- padding-bottom: 420px;
+ height: 100px;
+ margin-left: 950px;
+ padding-bottom: 300px;
+
  }
 .icon{
-    margin-left: 65px;
+    margin-right: 800px;
+    margin-bottom: 300px;
+    float: right;
+    position: relative;
+    bottom: 200px;   
 }
 .namasiswa{
-    margin-left: 250px;
-
+    float: right;
+    position: relative;
+    left: 400px;
+    bottom: 200px;
+    color: black;
+    font-size: 25px;
 }
 
 .table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  color: black;
+  margin-left: 400px;
 }
 
 td, th {
@@ -134,3 +144,46 @@ tr:nth-child(even) {
 #btn_generate:hover{
     background-color: #ceee00b7;
 }
+.judul{
+    text-align: center;
+    color: black;
+}
+.NIS{
+    position: relative;
+    left: 650px;
+    top: 100px;
+}
+.generate{
+    position: relative;
+    left: 730px;
+    top: 100px;
+}
+form{padding-bottom: 220px;}
+
+    padding-bottom: 420px;
+    }
+   .icon{
+       margin-left: 65px;
+   }
+.logout{
+    float: right;
+    font-size: 45px;
+    margin-top: 20px;
+    margin-right: 25px;
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+}
+.head_link{
+    margin-top: 82px;
+    margin-left: 15px;
+}
+.vl {
+  border-left: 1px solid black;
+  height: 300px;
+  position: relative;
+  left: 930px;
+  bottom: 230px;
+}
+
+

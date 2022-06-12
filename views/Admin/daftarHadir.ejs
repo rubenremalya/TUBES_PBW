@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>kehadiran</title>
-    <link rel="stylesheet" href="/public/Style/admin/daftarhadir.css">
+    <title>cekstatusptmt</title>
+    <link rel="stylesheet" href="/public/Style/satpam/cekstatusptmt.css">
     <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
     <script src="/public/JS/daftarH.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <div class="header">
@@ -29,32 +30,38 @@
             
             </div>
         </div>
-        <div class="kapasitas">
-            <h2>Daftar Kehadiran</h2> 
-
+        <div class="judul">
+            <h1>Daftar Kehadiran</h1>
+            <form action="/action_page.php">
+            <div class="NIS">
             <table>
+                <br>
                 <tr><td style="padding-bottom: 10px;"><label><td style="padding-bottom: 10px;"><input type="text" name="nis" placeholder="Nomor Induk Siswa"></td></label></td></tr>
                 <tr><td style="padding-bottom: 10px;"><label><td style="padding-bottom: 10px;"><input type="text" name="perioda" placeholder="Perioda"></td></label></td></tr>
-            </table>
+             </table>
+             </div>   
+            
             <div class="generate">
                 <button type="button" id="btn_generate" onclick="goTo()">ok</button>
             </div> 
         </table>
         </div>
-        
-
-        <div class="garis_vertikal">
             <div class="icon">
+                <br>
                 <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
-            </div>
+        </div>
     
+            
             <div class="namasiswa">
                 <h3>Nama Siswa</h3>
-                <br>
+                
                 Status PTMT : Ya
-                <br>
-                Daftar Kehadiran :
-                <table>
+                
+            </div>
+        </div>
+        <div class="vl"></div>
+        <div class="tabell">
+        <table>
                     <tr>
                         <th>Hari</th>
                         <th>Tanggal</th>
@@ -81,7 +88,6 @@
                     </tr>
                 </table>
             </div>
-        </div>
-        
+</form>
 </body>
 </html>
