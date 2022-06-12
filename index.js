@@ -245,9 +245,27 @@ app.get('/infoguru', async (req, res) => {
     });
 });
 
-app.get('/daftarsiswa', (req, res) => {
-    res.render('daftarsiswa');
+const getDaftarsiswa = conn => {
+    return new Promise((resolve, reject) => {
+        conn.query('SELECT nama_siswa, NIS, status_PTMT, id_ruang FROM siswa', (err, result) => {
+            if(err) {
+                reject(err);
+            } else{
+                resolve(result);
+            }
+        })
+})
+}
+
+app.get('/daftarsiswa', async (req, res) => {
+    const conn = await dbConnect();
+    var resinfo = await getDaftarsiswa(conn);
+    conn.release();
+    res.render('daftarsiswa', {
+        resinfo
+    });
 });
+
 
 
 //--------- KEPSEK -------
