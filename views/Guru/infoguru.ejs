@@ -4,16 +4,13 @@
     <title>infoguru</title>
 
     <link rel="stylesheet" href="/public/Style/guru/infoguru.css">
-
-    <link rel="stylesheet" href="/public/Style/guru/daftarsiswa.css">
-
     <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
     
 </head>
 <body>
    <div class="header">
            <div class="peteemte">
-               <a id="home" href="/menu">Sekolah Dasar Smarty</a>
+               <a id="home" href="/menuguru">Sekolah Dasar Smarty</a>
            </div>
 
            <div class="tooltip">
@@ -38,76 +35,67 @@
         <form>
         <table>
             <tr>
-                <th>Nama Guru</th>
                 <th>NIP</th>
+                <th>Nama Guru</th>
                 <th>Mata Pelajaran</th>
-                <th>Status PTMT</th>
                 <th>Mengajar Kelas</th>
             </tr>
+            <%= for(const row of resinfo) {%>
             <tr>
-                <td>Rudy</td>
-                <td>252352</td>
-                <td>Agama</td>
-                <td>YA</td>
-                <td>SEMUA KELAS</td>
-            </tr>
-            <tr>
-                <td>Ricko</td>
-                <td>252353</td>
+                <td><%= row.NIP %></td>
+                <td><%= row.nama_guru %></td>
                 <td>Pendidikan Kewernegaraan</td>
-                <td>YA</td>
-                <td>SEMUA KELAS</td>
+                <td><%= row.kelas %></td>
             </tr>
             <tr>
-                <td>Yanti</td>
-                <td>252354</td>
-                <td>Bahasa Indonesia</td>
-                <td>YA</td>
-                <td>SEMUA KELAS</td>
+                <td><%= row.NIP %></td>
+                <td><%= row.nama_guru %></td>
+                <td>Pendidikan Kewernegaraan</td>
+                <td><%= row.kelas %></td>
             </tr>
             <tr>
-                <td>Anah</td>
-                <td>252355</td>
-                <td>Matematika</td>
-                <td>YA</td>
-                <td>SEMUA KELAS</td>
+                <td><%= row.NIP %></td>
+                <td><%= row.nama_guru %></td>
+                <td>Pendidikan Kewernegaraan</td>
+                <td><%= row.kelas %></td>
             </tr>
             <tr>
-                <td>Seli</td>
-                <td>252356</td>
-                <td>IPA</td>
-                <td>YA</td>
-                <td>SEMUA KELAS</td>
+                <td><%= row.NIP %></td>
+                <td><%= row.nama_guru %></td>
+                <td>Pendidikan Kewernegaraan</td>
+                <td><%= row.kelas %></td>
             </tr>
             <tr>
-                <td>Ruben</td>
-                <td>252357</td>
-                <td>IPS</td>
-                <td>YA</td>
-                <td>SEMUA KELAS</td>
+                <td><%= row.NIP %></td>
+                <td><%= row.nama_guru %></td>
+                <td>Pendidikan Kewernegaraan</td>
+                <td><%= row.kelas %></td>
             </tr>
             <tr>
-                <td>Asep</td>
-                <td>252358</td>
-                <td>Seni Budaya</td>
-                <td>YA</td>
-                <td>SEMUA KELAS</td>
+                <td><%= row.NIP %></td>
+                <td><%= row.nama_guru %></td>
+                <td>Pendidikan Kewernegaraan</td>
+                <td><%= row.kelas %></td>
             </tr>
             <tr>
-                <td>Bagus</td>
-                <td>252359</td>
-                <td>Olahraga</td>
-                <td>YA</td>
-                <td>SEMUA KELAS</td>
+                <td><%= row.NIP %></td>
+                <td><%= row.nama_guru %></td>
+                <td>Pendidikan Kewernegaraan</td>
+                <td><%= row.kelas %></td>
             </tr>
             <tr>
-                <td>Steven</td>
-                <td>252359</td>
-                <td>Bahasa Inggris</td>
-                <td>YA</td>
-                <td>SEMUA KELAS</td>
+                <td><%= row.NIP %></td>
+                <td><%= row.nama_guru %></td>
+                <td>Pendidikan Kewernegaraan</td>
+                <td><%= row.kelas %></td>
             </tr>
-           
+            <tr>
+                <td><%= row.NIP %></td>
+                <td><%= row.nama_guru %></td>
+                <td>Pendidikan Kewernegaraan</td>
+                <td><%= row.kelas %></td>
+            </tr>
+           <%= } %> 
         </table>
     </form>
 </body>

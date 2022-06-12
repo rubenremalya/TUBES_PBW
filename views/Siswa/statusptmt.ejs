@@ -41,30 +41,28 @@
         </select>
         <br><br><br>
         <div class="isi">
-        Perioda PTMT : 1<br><br>
-        Tanggal Mulai : 17 Agustus 2022<br><br><br>
-        Tanggal Akhir : 18 Agustus 2022<br><br><br>
-        Ketentuan PTMT : Bagi siswa yang memiliki nomor induk siswa dengan angka akhir genap, akan hadir 
+            <table>
+                <tr>
+                    <th> Perioda PTMT : </th>
+                    <th> Tanggal Mulai </th>
+                    <th> Tanggal Akhir </th>
+                </tr>
+            <%= for(const row of resstat) {%>
+            <tr>
+                <td><%= row.nama_periode %></td>
+                <td><%= row.tanggal_mulai %></td>
+                <td><%= row.tanggal_akhir %></td>
+            </tr>
+        <%= } %>
+        
+            </table>
+            Ketentuan PTMT : Bagi siswa yang memiliki nomor induk siswa dengan angka akhir genap, akan hadir 
                         pada tanggal genap saja.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Begitu juga sebaliknya untuk yang memiliki angka akhir 
                         ganjil pada nomor induk siswa, akan hadir pada tanggal ganjil saja.
         </div>
+        
         </form>
 
-        <table id="table" >  
-            <thead>  
-                <tr>  
-                    <th>Username</th>  
-                    <th>Password</th>  
-                </tr>  
-            </thead>  
-             <tbody>  
-             <% print.forEach(function (user) { %>
-                <tr>  
-                    <td><%= user.username %></td>  
-                    <td><%= user.password %></td>
-                </tr>                                   
-             <% }) %>
-             </tbody>
-        </table>   
+        
 </body>
 </html>

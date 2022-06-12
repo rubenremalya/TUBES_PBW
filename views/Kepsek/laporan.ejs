@@ -33,7 +33,7 @@
         <h1>Rekapitulasi Laporan</h1><br>  
         </div>
 
-        <form action="/action_page.php">
+        <form action="/generateReport" method="post">
         <label for="perioda" style="color: black; margin-left: 50px; font-size: 25px;"></label>
         <select name="perioda" id="perioda">
             <option value="1">Periode 1</option>
@@ -150,7 +150,8 @@
                 <td>✓</td>
                 
             </tr>
-            
+            <button type="submit" id="btn" value="submit">SUBMIT</button>
         </table>
+        </form>
 </body>
 </html>

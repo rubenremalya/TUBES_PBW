@@ -9,6 +9,9 @@ import session from 'express-session';
 import multer from 'multer';
 import readXlsxFile from 'read-excel-file';
 import bodyParser from 'body-parser';
+import fs from 'fs';
+import pdf from 'html-pdf';
+import ejs from 'ejs';
 
 const PORT = 8080;
 const app = express();
@@ -33,13 +36,25 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     user: 'root',
     password: '',
     database: 'dtbs_ptmt',
     host: 'localhost',
     connectionLimit: 10
 });
+
+const dbConnect = () => {
+    return new Promise((resolve, reject) => {
+        connection.getConnection((err, conn) => {
+            if(err) {
+                reject(err);
+            } else{
+                resolve(conn);
+            }
+        })
+    })
+}
 
 
 //--------- LOGIN -------
@@ -166,16 +181,42 @@ app.get('/datasiswa', (req, res) => {
     res.render('datasiswa');
 })
 
+app.post('/siswa', function(req, res) {
+    let comm = "UPDATE siswa SET id_satpam=(SELECT id_satpam FROM siswa WHERE vaksin_ke LIKE '2')";
+    let isi = {vaksin_ke: req.body.vaksin};
+		connection.query(comm, isi, function(error, results, fields) {
+			if (error) throw error;
+			res.redirect('/dataguru');
+			res.end();
+		});
+});
+
 app.get('/dataperiode', (req, res) => {
     res.render('dataperiode');
 })
 
-app.get('/statusptmt', (req, res) => {
-    res.render('statusptmt');
-})
-app.listen(PORT, () => {
-    console.log(`Server is ready, listening on port ${PORT}`);
+const getStatusptmt = conn => {
+    return new Promise((resolve, reject) => {
+        conn.query('SELECT id_periode, tanggal_mulai, tanggal_akhir FROM periode', (err, result) => {
+            if(err) {
+                reject(err);
+            } else{
+                resolve(result);
+            }
+        })
+    })
+}
+
+app.get('/statusptmt', async (req, res) => {
+    const conn = await dbConnect();
+    var resstat = await getStatusptmt(conn);
+    conn.release();
+    res.render('statusptmt', {
+        resstat
+    });
 });
+
+
 
 
 //--------- GURU -------
@@ -183,9 +224,26 @@ app.get('/menuguru', (req, res) => {
     res.render('menuguru');
 })
 
-app.get('/infoguru', (req, res) => {
-    res.render('infoguru');
+const getInfoguru = conn => {
+    return new Promise((resolve, reject) => {
+        conn.query('SELECT NIP, nama_guru, kelas FROM guru', (err, result) => {
+            if(err) {
+                reject(err);
+            } else{
+                resolve(result);
+            }
+        })
 })
+}
+
+app.get('/infoguru', async (req, res) => {
+    const conn = await dbConnect();
+    var resinfo = await getInfoguru(conn);
+    conn.release();
+    res.render('infoguru', {
+        resinfo
+    });
+});
 
 app.get('/daftarsiswa', (req, res) => {
     res.render('daftarsiswa');
@@ -204,6 +262,32 @@ app.get('/grafiktrendptmt', (req, res) => {
 app.get('/laporan', (req, res) => {
     res.render('laporan');
 });
+
+app.post("/generateReport", (req, res) => {
+    ejs.renderFile(path.join(__dirname, '/views/Kepsek/laporan.ejs/'), (err, data) => {
+    if (err) {
+          res.send(err);
+    } else {
+        let options = {
+            "height": "11.25in",
+            "width": "8.5in",
+            "header": {
+                "height": "20mm"
+            },
+            "footer": {
+                "height": "20mm",
+            },
+        };
+        pdf.create(data, options).toFile("report.pdf", function (err, data) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send("File created successfully");
+            }
+        });
+    }
+});
+})
 
 
 //--------- SATPAM -------//
@@ -235,7 +319,7 @@ const storage = multer.diskStorage({
     console.log(rows);
     rows.shift();
     
-    let query = 'INSERT INTO siswa (NIS    id_satpam    id_ruang    nama_siswa    status_PTMT    bukti_vaksin    pass_siswa    username_siswa    tanggal_vaksin    vaksin_ke    email_ortu    nama_ortu) VALUES ?';
+    let query = 'INSERT INTO siswa (NIS pass_siswa username_siswa id_satpam id_ruang nama_siswa status_PTMT bukti_vaksin tanggal_vaksin vaksin_ke email_ortu nama_ortu) VALUES ?';
     connection.query(query, [rows], (error, response) => {
     console.log(error || response);
     });
@@ -243,18 +327,7 @@ const storage = multer.diskStorage({
     }
 
     var obj = {};
-app.get('/statusptmt', function(req, res){
-
-    connection.query('SELECT * FROM users', function(err, result) {
-
-        if(err){
-            throw err;
-        } else {
-            obj = {print: result};
-            res.render('print', obj);                
-        }
-    });
-
+    
+app.listen(PORT, () => {
+    console.log(`Server is ready, listening on port ${PORT}`);
 });
-
-//haloo
