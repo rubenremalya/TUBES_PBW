@@ -108,10 +108,10 @@ body {
     bottom: 200px;   
 }
 .namasiswa{
-    float: right;
+    
     position: relative;
-    left: 400px;
-    bottom: 200px;
+    left: 550px;
+    bottom: 150px;
     color: black;
     font-size: 25px;
 }
@@ -145,26 +145,25 @@ tr:nth-child(even) {
     background-color: #ceee00b7;
 }
 .judul{
-    text-align: center;
+    position: relative;
+    left: 100px;
     color: black;
 }
 .NIS{
     position: relative;
-    left: 650px;
-    top: 100px;
+    left: 100px;
+    top: 10px;
 }
 .generate{
     position: relative;
-    left: 730px;
-    top: 100px;
+    left: 180px;
+    top: 15px;
 }
 form{padding-bottom: 220px;}
 
     padding-bottom: 420px;
     }
-   .icon{
-       margin-left: 65px;
-   }
+
 .logout{
     float: right;
     font-size: 45px;
@@ -180,10 +179,18 @@ form{padding-bottom: 220px;}
 }
 .vl {
   border-left: 1px solid black;
-  height: 300px;
+  height: 250px;
   position: relative;
-  left: 930px;
-  bottom: 230px;
+  left: 400px;
+  bottom: 300px;
 }
-
-
+.tabell{
+    position: relative;
+    left: 550px;
+    bottom: 380px;
+}
+.icon{
+    position: relative;
+    right: 580px;
+    bottom: 100px;
+}
