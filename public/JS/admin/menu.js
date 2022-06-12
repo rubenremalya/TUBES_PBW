@@ -3,8 +3,8 @@ function goToPeriode() {
   }
   function goToMurid() {
     window.location.href="/dataMurid";  
-  }
-  function goToGuru() {
+    }
+    function goToGuru() {
     window.location.href="/dataGuru";  
   }
   function goToHadir() {

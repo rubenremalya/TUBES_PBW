@@ -53,3 +53,6 @@ function move3() {
       }
     }
   }
+function goToStatus() {
+    window.location.href="/statusptmt";  
+  }
