@@ -1,0 +1,11 @@
+NIS,id_satpam,id_ruang,nama_siswa,status_PTMT,bukti_vaksin,pass_siswa,username_siswa,tanggal_vaksin,vaksin_ke,email_ortu,nama_ortu
+221711001,1,1,aldo,YA,FOTO,21021109,221711001,6/1/2022,2,yusuf@gmail.com,yusuf
+221711002,2,2,butet,YA,FOTO,21020809,221711002,6/2/2022,3,siska@gmail.com,siska
+221711003,3,3,udin,TIDAK,FOTO,21020626,221711003,6/3/2022,2,bobi@gmail.com,bobi
+221711004,4,4,fajar,YA,FOTO,21021118,221711004,6/4/2022,1,tigor@gmail.com,tigor
+221711005,5,5,cecep,YA,FOTO,21020319,221711005,6/5/2022,2,lisa@gmail.com,lisa
+221711006,6,6,asep,YA,FOTO,21020514,221711006,6/6/2022,2,justin@gmail.com,justin
+221711007,7,7,itadori,TIDAK,FOTO,21020930,221711007,6/7/2022,1,puan@gmail.com,puan
+221711008,8,8,eren,YA,FOTO,21020215,221711008,6/8/2022,2,wati@gmail.com,wati
+221711009,9,9,naruto,YA,FOTO,21020316,221711009,6/9/2022,3,panjaitan@gmail.com,panjaitan
+221711010,10,10,sasuke,YA,FOTO,21020925,221711010,6/10/2022,2,joko@gmail.com,joko
