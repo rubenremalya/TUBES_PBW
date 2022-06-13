@@ -197,7 +197,7 @@ app.get('/dataperiode', (req, res) => {
 
 const getStatusptmt = conn => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT id_periode, tanggal_mulai, tanggal_akhir FROM periode', (err, result) => {
+        conn.query('SELECT nama_perioda, tanggal_mulai, tanggal_akhir FROM periode', (err, result) => {
             if(err) {
                 reject(err);
             } else{

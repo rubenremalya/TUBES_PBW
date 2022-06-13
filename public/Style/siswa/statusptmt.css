@@ -138,9 +138,13 @@ body {
     color: white;
     font-size: 20px;
     margin-left: 50px;
+    padding-bottom: 20px;
 }
+
 select{
     width: 200px;
     height: 25px;
 }
-form{padding-bottom: 580px;}
+table{
+    margin-bottom: 20px;
+}
