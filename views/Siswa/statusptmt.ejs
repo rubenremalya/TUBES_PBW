@@ -31,7 +31,7 @@
         <div class="kapasitas">
         <h1>Daftar Perioda PTMT Siswa</h1><br>  
         </div>
-
+        <form>
         <label class="perioda" style="color: black; margin-left: 50px; font-size: 25px;">Perioda:</label>
         <select name="perioda" id="perioda">
             <option value="1">1</option>
@@ -53,6 +53,12 @@
                 <td><%= row.tanggal_akhir %></td>
             </tr>
         <% } %>
+        
+            </table>
+            <br>
+            Ketentuan PTMT : Bagi siswa yang memiliki nomor induk siswa dengan angka akhir genap, akan hadir 
+                        pada tanggal genap saja.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Begitu juga sebaliknya untuk yang memiliki angka akhir 
+                        ganjil pada nomor induk siswa, akan hadir pada tanggal ganjil saja.
         </div>
             </table>
             <div class="ketentuan">
@@ -63,6 +69,6 @@
             </div>
         
 
-        
+        </form>
 </body>
 </html>

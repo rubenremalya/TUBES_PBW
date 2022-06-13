@@ -145,6 +145,20 @@ select{
     width: 200px;
     height: 25px;
 }
-table{
-    margin-bottom: 20px;
+form{padding-bottom: 580px;}
+.isi{
+    color: black;
+}
+
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: black;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+  color: black;
 }
