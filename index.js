@@ -1,5 +1,4 @@
 import * as url from 'url';
-    const __filename = url.fileURLToPath(import.meta.url);
     const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 import path from 'path';
@@ -80,8 +79,6 @@ app.get('/', async (req, res) => {
 app.post('/auth', function(req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
-    let usernamesiswa = req.body.username;
-    let passwordsiswa = req.body.password;
 
 	if (username && password) {
 		connection.query('SELECT * FROM admin WHERE username_admin = ? AND pass_admin = ?', 
@@ -93,31 +90,44 @@ app.post('/auth', function(req, res) {
 				res.redirect('/menu');
 			} 
             
-            else {
-				res.redirect('/incorrect');
-			}			
-			res.end();
-		});
-	} else if(usernamesiswa && passwordsiswa){
-        connection.query('SELECT * FROM siswa WHERE username_siswa = ? AND pass_siswa = ?', 
-        [usernamesiswa, passwordsiswa], function(error, results, fields) {
-			if (error) throw error;
-			if (results.length > 0) {
-				req.session.loggedin = true;
-				req.session.usernamesiswa = usernamesiswa;
-				res.redirect('/menusiswa');
-			} 
+            else if(username && password){
+                connection.query('SELECT * FROM siswa WHERE username_siswa = ? AND pass_siswa = ?', 
+                [username, password], function(error, results, fields) {
+                    if (error) throw error;
+                    if (results.length > 0) {
+                        req.session.loggedin = true;
+                        req.session.username = username;
+                        res.redirect('/menusiswa');
+                    } 
+                    
+                    else if(username && password){
+                        connection.query('SELECT * FROM guru WHERE username_guru = ? AND pass_guru = ?', 
+                        [username, password], function(error, results, fields) {
+                            if (error) throw error;
+                            if (results.length > 0) {
+                                req.session.loggedin = true;
+                                req.session.username = username;
+                                res.redirect('/menuguru');
+                            } 
+                            
+                            else {
+                                res.redirect('/incorrect');
+                            }			
+                            res.end();
+                        });
+                    }
+                });
+            }
+        
+
             
-            else {
-				res.redirect('/incorrect');
-			}			
-			res.end();
 		});
-		
-	}
+    }
+	
     else{res.redirect('/');
 		res.end();
     }
+
 });
 
 app.get('/ChangePass', (req, res) => {
@@ -167,8 +177,27 @@ app.post('/guru', function(req, res) {
 		});
 });
 
-app.get('/daftarHadir', (req, res) => {
-    res.render('daftarHadir');
+const getHadir = conn => {
+    return new Promise((resolve, reject) => {
+        conn.query('SELECT NIS, tanggal_mulai, tanggal_akhir FROM periode', (err, result) => {
+            if(err) {
+                reject(err);
+            } else{
+                resolve(result);
+            }
+        })
+    })
+}
+
+app.get('/statusptmt', async (req, res) => {
+    const conn = await dbConnect();
+    const resstat = await getStatusptmt(conn);
+    conn.release();
+    console.log(resstat);
+
+    res.render('statusptmt', {
+        resstat
+    });
 });
 
 
@@ -197,7 +226,7 @@ app.get('/dataperiode', (req, res) => {
 
 const getStatusptmt = conn => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT id_periode, tanggal_mulai, tanggal_akhir FROM periode', (err, result) => {
+        conn.query('SELECT nama_perioda, tanggal_mulai, tanggal_akhir FROM periode', (err, result) => {
             if(err) {
                 reject(err);
             } else{
