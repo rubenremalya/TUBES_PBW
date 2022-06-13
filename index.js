@@ -353,6 +353,13 @@ app.get('/grafiktrendptmt', (req, res) => {
     res.render('grafiktrendptmt');
 })
 
+app.get('/grafiktrendptmt2', (req, res) => {
+    res.render('grafiktrendptmt2');
+})
+app.get('/grafiktrendptmt3', (req, res) => {
+    res.render('grafiktrendptmt3');
+})
+
 const getLaporan = conn => {
     return new Promise((resolve, reject) => {
         conn.query('SELECT nama_guru FROM guru', (err, result) => {
