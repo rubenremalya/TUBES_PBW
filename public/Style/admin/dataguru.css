@@ -82,8 +82,25 @@ body {
 
 .judul{
     color: black;
-    margin-left: 50px;
+    position: relative;
     font-size: 20px;
+    left: 100px;
+    top: 100px;
+
+}
+.judul1{
+    color: black;
+    position: relative;
+    font-size: 20px;
+    left: 660px;
+    bottom: 750px;
+}
+.judul2{
+    color: black;
+    position: relative;
+    font-size: 20px;
+    left: 1300px;
+    bottom: 990px;
 }
 
 .data{
@@ -118,3 +135,8 @@ body {
 #btn_generate:hover{
     background-color: #ceee00b7;
 }
+.title{
+    position: relative;
+    left: 50px;
+}
+
