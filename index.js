@@ -201,7 +201,7 @@ app.post('/guru', function(req, res) {
 
 const getHadir = conn => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT NIS, tanggal_mulai, tanggal_akhir FROM periode', (err, result) => {
+        conn.query('SELECT NIS FROM siswa', (err, result) => {
             if(err) {
                 reject(err);
             } else{
@@ -213,12 +213,12 @@ const getHadir = conn => {
 
 app.get('/daftarhadir', async (req, res) => {
     const conn = await dbConnect();
-    const resstat = await getStatusptmt(conn);
+    const reshadir = await getHadir(conn);
     conn.release();
-    console.log(resstat);
+    console.log(reshadir);
 
-    res.render('statusptmt', {
-        resstat
+    res.render('daftarhadir', {
+        reshadir
     });
 });
 
@@ -327,8 +327,25 @@ app.get('/grafiktrendptmt', (req, res) => {
     res.render('grafiktrendptmt');
 })
 
-app.get('/laporan', (req, res) => {
-    res.render('laporan');
+const getLaporan = conn => {
+    return new Promise((resolve, reject) => {
+        conn.query('SELECT nama_guru FROM guru', (err, result) => {
+            if(err) {
+                reject(err);
+            } else{
+                resolve(result);
+            }
+        })
+})
+}
+
+app.get('/laporan', async (req, res) => {
+    const conn = await dbConnect();
+    var reslap = await getDaftarsiswa(conn);
+    conn.release();
+    res.render('laporan', {
+        reslap
+    });
 });
 
 app.post("/generateReport", (req, res) => {
@@ -396,6 +413,48 @@ const storage = multer.diskStorage({
 
     var obj = {};
     
+
+
+    app.get('/', function(req, res) {
+        db.query('SELECT * FROM countries ORDER BY id desc', function(err, rows) {
+        res.render('index', {
+        data: rows
+        });
+        });
+        });
+        app.post('/get-states-by-country', function(req, res) {
+        db.query('SELECT * FROM states WHERE country_id = "' + req.body.country_id + '"',
+        function(err, rows, fields) {
+        if (err) {
+        res.json({
+        msg: 'error'
+        });
+        } else {
+        res.json({
+        msg: 'success',
+        states: rows
+        });
+        }
+        });
+        });
+        app.post('/get-cities-by-state', function(req, res) {
+        db.query('SELECT * FROM cities WHERE state_id = "' + req.body.state_id + '"',
+        function(err, rows, fields) {
+        if (err) {
+        res.json({
+        msg: 'error'
+        });
+        } else {
+        res.json({
+        msg: 'success',
+        cities: rows
+        });
+        }
+        });
+        });
+
+
+
 app.listen(PORT, () => {
     console.log(`Server is ready, listening on port ${PORT}`);
 });
