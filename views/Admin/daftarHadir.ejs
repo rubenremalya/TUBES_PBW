@@ -42,13 +42,25 @@
             <div class="NIS">
             <table>
                 <br>
-                <label for="country">Country</label>
+                <label for="country">Nomor Induk Siswa : </label>
                     <select class="form-control" id="country-dropdown">
-                        <option value="">Select Country</option>
+                        <option value="">Nomor Induk Siswa</option>
                         <% if(data.length){
                             for(var i = 0; i< data.length; i++) {%> 
                             <option value="<%= data[i].id%>">
-                                <%= data[i].name%>
+                                <%= data[i].NIS%>
+                            </option>
+                            <% } } %>
+                    </select>
+                    <br>
+                    <br>
+                    <label for="country">Perioda : </label>
+                    <select class="form-control" id="country-dropdown">
+                        <option value="" id="dropperiod">Perioda</option>
+                        <% if(data.length){
+                            for(var i = 0; i< data.length; i++) {%> 
+                            <option value="<%= data[i].id%>">
+                                <%= data[i].nama_perioda%>
                             </option>
                             <% } } %>
                     </select>

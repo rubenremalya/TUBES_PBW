@@ -1,19 +1,18 @@
-import * as url from 'url';
-    const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const url = require ('url');
 
-import path from 'path';
-import express from 'express';
-import mysql from 'mysql';
-import session from 'express-session';
-import multer from 'multer';
-import readXlsxFile from 'read-excel-file';
-import bodyParser from 'body-parser';
-import fs from 'fs';
-import pdf from 'html-pdf';
-import ejs from 'ejs';
+    const express = require('express')
+    const app = express()
+    const bodyparser = require('body-parser')
+    const fs = require('fs');
+    const readXlsxFile = require('read-excel-file/node');
+    const mysql = require('mysql')
+    const multer = require('multer')
+    const path = require('path')
+    const session = require('express-session')
+const pdf = require ('html-pdf');
+const ejs = require ('ejs');
 
 const PORT = 8080;
-const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', [path.join(__dirname, 'views'), 
@@ -211,16 +210,43 @@ const getHadir = conn => {
     })
 }
 
-app.get('/daftarhadir', async (req, res) => {
-    const conn = await dbConnect();
-    const reshadir = await getHadir(conn);
-    conn.release();
-    console.log(reshadir);
-
+app.get('/daftarhadir', function(req, res) {
+    connection.query('SELECT NIS FROM siswa ORDER BY id_satpam desc', function(err, rows) {
     res.render('daftarhadir', {
-        reshadir
+    data: rows
     });
-});
+    });
+    });
+    app.post('/get-states-by-country', function(req, res) {
+    connection.query('SELECT nama_perioda FROM periode WHERE id_periode = "' + req.body.id_periode + '"',
+    function(err, rows, fields) {
+    if (err) {
+    res.json({
+    msg: 'error'
+    });
+    } else {
+    res.json({
+    msg: 'success',
+    states: rows
+    });
+    }
+    });
+    });
+    app.post('/get-cities-by-state', function(req, res) {
+    connection.query('SELECT * FROM cities WHERE state_id = "' + req.body.state_id + '"',
+    function(err, rows, fields) {
+    if (err) {
+    res.json({
+    msg: 'error'
+    });
+    } else {
+    res.json({
+    msg: 'success',
+    cities: rows
+    });
+    }
+    });
+    });
 
 
 //--------- SISWA -------
@@ -404,7 +430,7 @@ const storage = multer.diskStorage({
     console.log(rows);
     rows.shift();
     
-    let query = 'INSERT INTO siswa (NIS pass_siswa username_siswa id_satpam id_ruang nama_siswa status_PTMT bukti_vaksin tanggal_vaksin vaksin_ke email_ortu nama_ortu) VALUES ?';
+    let query = 'INSERT INTO siswa (NIS, pass_siswa, username_siswa, id_satpam, id_ruang, nama_siswa, status_PTMT, bukti_vaksin, tanggal_vaksin, vaksin_ke, email_ortu, nama_ortu) VALUES ?';
     connection.query(query, [rows], (error, response) => {
     console.log(error || response);
     });
@@ -415,43 +441,7 @@ const storage = multer.diskStorage({
     
 
 
-    app.get('/', function(req, res) {
-        db.query('SELECT * FROM countries ORDER BY id desc', function(err, rows) {
-        res.render('index', {
-        data: rows
-        });
-        });
-        });
-        app.post('/get-states-by-country', function(req, res) {
-        db.query('SELECT * FROM states WHERE country_id = "' + req.body.country_id + '"',
-        function(err, rows, fields) {
-        if (err) {
-        res.json({
-        msg: 'error'
-        });
-        } else {
-        res.json({
-        msg: 'success',
-        states: rows
-        });
-        }
-        });
-        });
-        app.post('/get-cities-by-state', function(req, res) {
-        db.query('SELECT * FROM cities WHERE state_id = "' + req.body.state_id + '"',
-        function(err, rows, fields) {
-        if (err) {
-        res.json({
-        msg: 'error'
-        });
-        } else {
-        res.json({
-        msg: 'success',
-        cities: rows
-        });
-        }
-        });
-        });
+    
 
 
 

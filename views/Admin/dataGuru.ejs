@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/public/Style/admin/dataguru.css">
     <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.css">
+    <script src="/public/JS/admin/dataG.js"></script>
 </head>
 <body>
     <div class="header">
@@ -22,16 +23,17 @@
                 <a id="link2" href="/dataMurid">Data Murid</a>
                 <a id="link3" href="/dataGuru">Submit Data</a>
                 <a id="link4" href="/daftarHadir">Daftar Kehadiran</a>
-            </div> 
-            
+            </div>            
     </div>
-       
-        <div class="judul">
-        <div class="title">
-        <h1>Data Guru</h1>
-        </div>
+
+        <button type="button" id="show" onclick="myFunction()">Data Guru</button>
+        <button type="button" id="show" onclick="myFunction()">Data Kepala Sekolah</button>
+        <button type="button" id="show" onclick="myFunction()">Data Satpam</button>
+
+        <div class="data" id="hidden-panel">
         <form action="/guru" method="post">
-        <div class="data">
+        
+            <h1>Data Guru</h1>
             <table>
             <tr><td style="padding-bottom: 10px;"><label>Nomor Induk Pegawai:<td style="padding-bottom: 10px;"><input type="text" name="Fname"></td></label></td></tr>
             <tr><td style="padding-bottom: 10px;"><label>Nama Guru:<td style="padding-bottom: 10px;"><input type="text" name="Lname"></td></label></td></tr>
@@ -44,7 +46,7 @@
         </div>  
         
 
-        <div class="judul1">    
+        <div class="judul1" id="hidden-panel2">    
         <h1>Data Kepala Sekolah</h1>
         
             <table>
@@ -59,7 +61,7 @@
         </div>  
         
 
-        <div class="judul2">
+        <div class="judul2" id="hidden-panel3">
         <h1>Data Satpam</h1>
         
             <table>

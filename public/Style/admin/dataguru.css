@@ -140,3 +140,14 @@ body {
     left: 50px;
 }
 
+#hidden-panel {
+    display: block;
+}
+
+#hidden-panel2{
+    display: none;
+}
+
+#hidden-panel3 {
+    display: none;
+}
