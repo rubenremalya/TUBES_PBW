@@ -4,7 +4,7 @@
     <title>dataperiode</title>
     <link rel="stylesheet" href="/public/Style/siswa/statusptmt.css">
     <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
-    
+    <script src="/public/JS/siswa/statusptmt.js"></script>
 </head>
 <body>
    <div class="header">
@@ -31,22 +31,26 @@
         <div class="kapasitas">
         <h1>Daftar Perioda PTMT Siswa</h1><br>  
         </div>
-        <form>
-        <label class="perioda" style="color: black; margin-left: 50px; font-size: 25px;">Perioda:</label>
-        <select name="perioda" id="perioda">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
+        <form action="/get-states-by-country" method="post">
+            <label for="country" id="titper">Perioda : </label>
+            <select class="form-control" id="country-dropdown" onchange="showHide()">
+                <option value="" id="dropperiod">Perioda</option>
+                <% if(data.length){
+                    for(var i = 0; i< data.length; i++) {%> 
+                    <option value="<%= data[i].id%>" id="dropper">
+                        <%= data[i].nama_perioda%>
+                    </option>
+                    <% } } %>
+            </select>
         <br><br><br>
-        <div class="isi">
+        <div class="isi" id="ptmt">
             <table>
                 <tr>
                     <th> Perioda PTMT : </th>
                     <th> Tanggal Mulai </th>
                     <th> Tanggal Akhir </th>
                 </tr>
-            <% for(const row of resstat) {%>
+            <% for(const row of rest) {%>
             <tr>
                 <td><%= row.nama_perioda %></td>
                 <td><%= row.tanggal_mulai %></td>

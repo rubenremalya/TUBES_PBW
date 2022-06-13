@@ -162,3 +162,21 @@ tr:nth-child(even) {
   background-color: #dddddd;
   color: black;
 }
+
+#titper{
+    margin-left: 50px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#dropperiod{
+    font-size: 17px;
+}
+#dropper{
+    font-size: 17px;
+}
+
+#ptmt{
+    display: none;
+}

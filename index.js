@@ -189,15 +189,26 @@ app.get('/dataGuru', (req, res) => {
 
 app.post('/guru', function(req, res) {
     let comm = "INSERT INTO guru SET ?";
+    let comm2 = "INSERT INTO kepalasekolah SET ?";
+    let comm3 = "INSERT INTO satpam SET ?";
     let isi = {NIP: req.body.Fname, nama_guru: req.body.Lname, username_guru: req.body.email, 
         pass_guru: req.body.Fname, kelas: req.body.kelas};
-		connection.query(comm, isi, function(error, results, fields) {
-			if (error) throw error;
-			res.redirect('/dataguru');
-			res.end();
-		});
-});
-
+    let isik = {nama_kepsek: req.body.Fname2, username_kepsek: req.body.Lname2, pass_kepsek: req.body.email2};    
+    let isis = {nama_satpam: req.body.Fname3, username_satpam: req.body.Lname3, pass_satpam: req.body.email3}; 
+    connection.query(comm, isi, function(error, results, fields) {
+        if (error) throw error;
+        res.redirect('/dataguru');
+    });
+    connection.query(comm2, isik, function(error, results, fields) {
+        if (error) throw error;
+        res.redirect('/dataguru');
+    });
+    connection.query(comm3, isis, function(error, results, fields) {
+        if (error) throw error;
+        res.redirect('/dataguru');
+        res.end();
+    });    
+    });
 const getHadir = conn => {
     return new Promise((resolve, reject) => {
         conn.query('SELECT NIS FROM siswa', (err, result) => {
@@ -216,37 +227,15 @@ app.get('/daftarhadir', function(req, res) {
     data: rows
     });
     });
-    });
-    app.post('/get-states-by-country', function(req, res) {
-    connection.query('SELECT nama_perioda FROM periode WHERE id_periode = "' + req.body.id_periode + '"',
+
+    connection.query('SELECT nama_perioda FROM periode ORDER BY id_periode desc',
     function(err, rows, fields) {
-    if (err) {
-    res.json({
-    msg: 'error'
-    });
-    } else {
-    res.json({
-    msg: 'success',
-    states: rows
-    });
-    }
-    });
-    });
-    app.post('/get-cities-by-state', function(req, res) {
-    connection.query('SELECT * FROM cities WHERE state_id = "' + req.body.state_id + '"',
-    function(err, rows, fields) {
-    if (err) {
-    res.json({
-    msg: 'error'
-    });
-    } else {
-    res.json({
-    msg: 'success',
-    cities: rows
-    });
-    }
-    });
-    });
+        res.render('daftarhadir', {
+            data: rows
+            });
+            });
+        });
+    
 
 
 //--------- SISWA -------
@@ -284,16 +273,19 @@ const getStatusptmt = conn => {
     })
 }
 
-app.get('/statusptmt', async (req, res) => {
+app.get('/statusptmt', async function(req, res) {
     const conn = await dbConnect();
-    const resstat = await getStatusptmt(conn);
+    var rest = await getStatusptmt(conn);
     conn.release();
-    console.log(resstat);
-
-    res.render('statusptmt', {
-        resstat
+    
+    connection.query('SELECT nama_perioda FROM periode ORDER BY id_periode desc', function(err, rows) {
+        res.render('statusptmt', {
+            rest,
+            data: rows
     });
-});
+    });
+    });
+
 
 //--------- GURU -------
 app.get('/menuguru', (req, res) => {
