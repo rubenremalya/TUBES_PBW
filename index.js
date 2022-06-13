@@ -341,7 +341,7 @@ const getLaporan = conn => {
 
 app.get('/laporan', async (req, res) => {
     const conn = await dbConnect();
-    var reslap = await getDaftarsiswa(conn);
+    var reslap = await getLaporan(conn);
     conn.release();
     res.render('laporan', {
         reslap
