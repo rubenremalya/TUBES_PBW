@@ -129,20 +129,22 @@ app.post('/auth', function(req, res) {
                                                 req.session.username = username;
                                                 res.redirect('/cekstatusptmt');
                                     }
+                                        else {
+                                            res.redirect('/incorrect');
+                                        }			
+                                        res.end();
                             
-                            else {
-                                res.redirect('/incorrect');
-                            }			
-                            res.end();
-                        });
-                    }
-                });
-            }
-        
-
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
             
-		});
-    }
+	});
+}
 	
     else{res.redirect('/');
 		res.end();
@@ -209,7 +211,7 @@ const getHadir = conn => {
     })
 }
 
-app.get('/statusptmt', async (req, res) => {
+app.get('/daftarhadir', async (req, res) => {
     const conn = await dbConnect();
     const resstat = await getStatusptmt(conn);
     conn.release();
