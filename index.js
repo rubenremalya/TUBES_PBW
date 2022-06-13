@@ -117,7 +117,7 @@ app.post('/auth', function(req, res) {
 	}
     else{res.redirect('/');
 		res.end();
-}
+    }
 });
 
 app.get('/ChangePass', (req, res) => {
@@ -209,15 +209,14 @@ const getStatusptmt = conn => {
 
 app.get('/statusptmt', async (req, res) => {
     const conn = await dbConnect();
-    var resstat = await getStatusptmt(conn);
+    const resstat = await getStatusptmt(conn);
     conn.release();
+    console.log(resstat);
+
     res.render('statusptmt', {
         resstat
     });
 });
-
-
-
 
 //--------- GURU -------
 app.get('/menuguru', (req, res) => {
@@ -245,9 +244,27 @@ app.get('/infoguru', async (req, res) => {
     });
 });
 
-app.get('/daftarsiswa', (req, res) => {
-    res.render('daftarsiswa');
+const getDaftarsiswa = conn => {
+    return new Promise((resolve, reject) => {
+        conn.query('SELECT nama_siswa, NIS, status_PTMT, id_ruang FROM siswa', (err, result) => {
+            if(err) {
+                reject(err);
+            } else{
+                resolve(result);
+            }
+        })
+})
+}
+
+app.get('/daftarsiswa', async (req, res) => {
+    const conn = await dbConnect();
+    var resinfo = await getDaftarsiswa(conn);
+    conn.release();
+    res.render('daftarsiswa', {
+        resinfo
+    });
 });
+
 
 
 //--------- KEPSEK -------

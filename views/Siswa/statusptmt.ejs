@@ -32,8 +32,7 @@
         <h1>Daftar Perioda PTMT Siswa</h1><br>  
         </div>
 
-        <form action="/action_page.php">
-        <label for="perioda" style="color: black; margin-left: 50px; font-size: 25px;">Perioda:</label>
+        <label class="perioda" style="color: black; margin-left: 50px; font-size: 25px;">Perioda:</label>
         <select name="perioda" id="perioda">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -47,13 +46,13 @@
                     <th> Tanggal Mulai </th>
                     <th> Tanggal Akhir </th>
                 </tr>
-            <%= for(const row of resstat) {%>
+            <% for(const row of resstat) {%>
             <tr>
                 <td><%= row.nama_periode %></td>
                 <td><%= row.tanggal_mulai %></td>
                 <td><%= row.tanggal_akhir %></td>
             </tr>
-        <%= } %>
+        <% } %>
         
             </table>
             Ketentuan PTMT : Bagi siswa yang memiliki nomor induk siswa dengan angka akhir genap, akan hadir 
@@ -61,7 +60,6 @@
                         ganjil pada nomor induk siswa, akan hadir pada tanggal ganjil saja.
         </div>
         
-        </form>
 
         
 </body>
