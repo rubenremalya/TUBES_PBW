@@ -109,6 +109,26 @@ app.post('/auth', function(req, res) {
                                 req.session.username = username;
                                 res.redirect('/menuguru');
                             } 
+
+                            else if(username && password){
+                                connection.query('SELECT * FROM kepalasekolah WHERE username_kepsek = ? AND pass_kepsek = ?', 
+                                [username, password], function(error, results, fields) {
+                                    if (error) throw error;
+                                    if (results.length > 0) {
+                                        req.session.loggedin = true;
+                                        req.session.username = username;
+                                        res.redirect('/menukepsek');
+                                    }
+
+                                    else if(username && password){
+                                        connection.query('SELECT * FROM satpam WHERE username_satpam = ? AND pass_satpam = ?', 
+                                        [username, password], function(error, results, fields) {
+                                            if (error) throw error;
+                                            if (results.length > 0) {
+                                                req.session.loggedin = true;
+                                                req.session.username = username;
+                                                res.redirect('/cekstatusptmt');
+                                    }
                             
                             else {
                                 res.redirect('/incorrect');
