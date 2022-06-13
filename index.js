@@ -117,7 +117,7 @@ app.post('/auth', function(req, res) {
 	}
     else{res.redirect('/');
 		res.end();
-}
+    }
 });
 
 app.get('/ChangePass', (req, res) => {
@@ -209,15 +209,14 @@ const getStatusptmt = conn => {
 
 app.get('/statusptmt', async (req, res) => {
     const conn = await dbConnect();
-    var resstat = await getStatusptmt(conn);
+    const resstat = await getStatusptmt(conn);
     conn.release();
+    console.log(resstat);
+
     res.render('statusptmt', {
         resstat
     });
 });
-
-
-
 
 //--------- GURU -------
 app.get('/menuguru', (req, res) => {

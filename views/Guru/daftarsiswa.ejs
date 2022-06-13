@@ -47,8 +47,9 @@
                 <th>Periode</th>
                 <th>Kelas</th>
             </tr>
-            <tr>
-                <td>Asep</td>
+            <% for(const row of resstat) {%>
+                <tr>
+                <td><% row.nama_siswa %></td>
                 <td>252352</td>
                 <td>Ya</td>
                 <td>1</td>
@@ -103,7 +104,7 @@
                 <td>1</td>
                 <td>A</td>
             </tr>
-           
+           <% } %>
         </table>
 </body>
 </html>
