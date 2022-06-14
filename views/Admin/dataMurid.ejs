@@ -4,7 +4,8 @@
     <title>datamurid</title>
      <link rel="stylesheet" href="/public/Style/admin/datamurid.css">
      <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
-</head>
+    <script src="/public/JS/admin/dataM.js"></script>
+    </head>
 <body>
     <div class="header">
             <div class="peteemte">
@@ -19,7 +20,7 @@
             <div class="head_link">
                 <a id="link1" href="/periode">Periode PTMT</a>
                 <a id="link2" href="/dataMurid">Data Murid</a>
-                <a id="link3" href="/dataGuru">Data Guru</a>
+                <a id="link3" href="/dataGuru">Submit Data</a>
                 <a id="link4" href="/daftarHadir">Daftar Kehadiran</a>
             </div>
             
@@ -30,15 +31,37 @@
         </div>
         <div class="judul">
         <h1>Data Siswa</h1>
+        
         </div>
         <div class="data">
             <form action="/uploadfile" enctype="multipart/form-data" method="post">
                 <input type="file" name="uploadfile" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' >
                 <input type="submit" value="Upload Excel">
-              </form>  
+              </form>
+              <div id="hidden-panel">
+                <table>
+                    <tr>
+                        <th>Nama Siswa</th>
+                        <th>NIS</th>
+                        <th>Username Siswa</th>
+                        <th>Password Siswa</th>
+                    </tr>
+                    <% for(const row of resdata) {%>
+                        <tr>
+                        <td><%= row.nama_siswa %></td>
+                        <td><%= row.NIS %></td>
+                        <td><%= row.username_siswa %></td>
+                        <td><%= row.pass_siswa %></td>
+                    </tr>
+                    <% } %>
+                    </table>
+                </div>
+            </div>
+            <form > 
         <div class="generate">
-            <button type="button" id="btn_generate" onclick="goTo()">Generate Password untuk siswa</button>
-        </div>
+            <button type="button" id="btn_generate" onclick="myFunction()">Generate Password untuk siswa</button>
+            
         </div>  
+    </form> 
 </body>
 </html>

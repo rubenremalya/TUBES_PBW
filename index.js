@@ -179,8 +179,25 @@ app.post('/periode', function(req, res) {
 		});
 });
 
-app.get('/dataMurid', (req, res) => {
-    res.render('dataMurid');
+const getDataMurid = conn => {
+    return new Promise((resolve, reject) => {
+        conn.query('SELECT nama_siswa, NIS, username_siswa, pass_siswa FROM siswa', (err, result) => {
+            if(err) {
+                reject(err);
+            } else{
+                resolve(result);
+            }
+        })
+})
+}
+
+app.get('/datamurid', async (req, res) => {
+    const conn = await dbConnect();
+    var resdata = await getDataMurid(conn);
+    conn.release();
+    res.render('datamurid', {
+        resdata
+    });
 });
 
 app.get('/dataGuru', (req, res) => {

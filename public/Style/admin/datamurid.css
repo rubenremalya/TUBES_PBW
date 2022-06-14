@@ -99,10 +99,10 @@ body {
 body {
     margin: 0;
     background-color: #e2d6d6;
+    margin-bottom: 650px;
 }  
 
 .data{
-    padding-bottom: 330px;
     font-size: 20px;
     margin-left: 50px;
 }
@@ -120,3 +120,21 @@ body {
 #btn_generate:hover{
     background-color: #ceee00b7;
 }
+
+#hidden-panel{
+    display: none;
+    margin: auto;
+    margin-left: 650px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    color: black;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+    color: black;
+  }

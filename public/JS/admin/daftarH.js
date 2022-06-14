@@ -39,3 +39,12 @@ $("#city-dropdown").append('<option value="' + value.id + '">' + value.name + '<
 });
 });
 }); 
+
+function myFunction() {
+    const x = document.getElementById("hidden-panel");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }

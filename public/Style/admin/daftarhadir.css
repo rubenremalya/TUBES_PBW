@@ -29,7 +29,6 @@ body {
 .tooltip {
     float: right;
 }
-<<<<<<< HEAD
   
 .tooltip .tooltiptext {
     visibility: hidden;
@@ -161,8 +160,6 @@ tr:nth-child(even) {
 }
 form{padding-bottom: 220px;}
 
-    padding-bottom: 420px;
-    }
 
 .logout{
     float: right;
@@ -193,4 +190,8 @@ form{padding-bottom: 220px;}
     position: relative;
     right: 580px;
     bottom: 100px;
+}
+
+#hidden-panel{
+    display: none;
 }
