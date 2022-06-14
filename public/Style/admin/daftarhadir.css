@@ -83,6 +83,7 @@ body {
 body {
     margin: 0;
     background-color: #e2d6d6;
+    margin-bottom: 450px;
 }
 .kapasitas{
     color: black;
@@ -96,7 +97,6 @@ body {
  border-left: 1px black solid;
  height: 100px;
  margin-left: 950px;
- padding-bottom: 300px;
 
  }
 .icon{
