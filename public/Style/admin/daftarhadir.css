@@ -144,19 +144,17 @@ tr:nth-child(even) {
     background-color: #ceee00b7;
 }
 .judul{
-    position: relative;
-    left: 100px;
+    text-align: center;
     color: black;
 }
 .NIS{
-    position: relative;
-    left: 100px;
-    top: 10px;
+    text-align: center;
+    color: black;
 }
 .generate{
     position: relative;
-    left: 180px;
-    top: 15px;
+    left: 900px;
+    top: 30px;
 }
 
 .logout{

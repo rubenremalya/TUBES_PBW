@@ -31,7 +31,7 @@
         <div class="kapasitas">
         <h1>Masukan Data Vaksinasi Anda</h1><br>  
         </div>  
-
+        <div class="isi">
         <form action="/siswa" method="post">
         <label for="perioda" style="color: black; margin-left: 50px; font-size: 25px;">Vaksinasi ke:</label>
         <select name="perioda" id="perioda" onchange="move()">
@@ -42,7 +42,9 @@
         <br><br><br>
         <div class="data">
             Tanggal Vaksin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="date" onchange="move2()"><br><br>
+            <div class="data1">
             Scan/Foto<br>Sertifikat Vaksin:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" id="myFile" name="filename" name="Fname" onchange="move3()"><br><br><br>
+        </div>
         </div>
         <div id="myProgress">
             <div id="myBar"></div>
@@ -51,6 +53,7 @@
         <div class="generate">
             <button type="button" id="btn_generate" onclick="goToStatus()">Next</button>
         </div>
+    </div>
         </form>
 </body>
 </html>

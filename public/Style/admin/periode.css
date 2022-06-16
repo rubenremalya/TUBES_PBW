@@ -88,6 +88,7 @@ body {
     margin-left: 32px;
 }
 .kapasitas{
+    text-align: center;
     color: black;
     margin-left: 50px;
 }
@@ -96,25 +97,27 @@ body {
     width: 3%;
 }
 .periode{
+    text-align: center;
     color: black;
     margin-left: 50px;
 
 }
 .ptmt{
+    text-align: center;
     color: black;
     margin-left: 50px;
 
 }
 .data{
     font-size: 20px;
-    margin-left: 50px;
+    margin-left: 800px;
     color: black;
 }
 
 .data2{
     padding-bottom: 270px;
     font-size: 20px;
-    margin-left: 50px;
+    margin-left: 800px;
     color: black;
 }
 .generate {
@@ -133,4 +136,7 @@ body {
 }
 #btn_generate:hover{
     background-color: #ceee00b7;
+}
+.Ruangan{
+    text-align: center;
 }

@@ -92,7 +92,7 @@ body {
 }
 .kapasitas{
     color: black;
-    margin-left: 50px;
+    text-align: center;
 }
 .periode{
     color: black;
@@ -105,9 +105,13 @@ body {
 
 }
 .data{
-    font-size: 20px;
-    margin-left: 50px;
+    font-size: 25px;
+    text-align: center;
     color: black;
+}
+.data1{
+    position: relative;
+    left: 70px;
 }
 
 .data2{
@@ -117,7 +121,7 @@ body {
     color: black;
 }
 .generate {
-    margin-left: 158px;
+    margin-left: 920px;
     
     
 }
@@ -136,8 +140,7 @@ body {
 }
 .isi{
     color: black;
-    font-size: 20px;
-    margin-left: 50px;
+    text-align: center;
 }
 select{
     width: 200px;
@@ -154,6 +157,7 @@ form{padding-bottom: 580px;}
     width: 12%;
     background-color: #ddd;
     border-radius: 10pt;
+    margin-left: 780px;
   }
   
   #myBar {
