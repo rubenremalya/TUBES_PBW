@@ -170,12 +170,17 @@ app.get('/periode', async (req, res) => {
 
 app.post('/periode', function(req, res) {
     let comm = "INSERT INTO periode SET ?";
+    let comm2 = "INSERT INTO ruang SET ?";
+    let isi2 = {kapasitas_ruang: req.body.jumlah};
     let isi = {kapasitas: req.body.jumlah, nama_perioda: req.body.Fname, tanggal_mulai: req.body.mulai,
-        tanggal_akhir: req.body.akhir, nama_perioda2: req.body.Fname2, tgl_mulaidaftar: req.body.Mdaftar, tgl_akhirdaftar: req.body.Adaftar};
-		connection.query(comm, isi, function(error, results, fields) {
-			if (error) throw error;
-			res.redirect('/periode');
-			res.end();
+    tanggal_akhir: req.body.akhir, nama_perioda2: req.body.Fname2, tgl_mulaidaftar: req.body.Mdaftar, tgl_akhirdaftar: req.body.Adaftar};
+	connection.query(comm2, isi2, function(error, results, fields) {
+		if (error) throw error;
+		});
+    connection.query(comm, isi, function(error, results, fields) {
+		if (error) throw error;
+		res.redirect('/periode');
+		res.end();
 		});
 });
 
@@ -214,11 +219,9 @@ app.post('/guru', function(req, res) {
     let isis = {nama_satpam: req.body.Fname3, username_satpam: req.body.Lname3, pass_satpam: req.body.email3}; 
     connection.query(comm, isi, function(error, results, fields) {
         if (error) throw error;
-        res.redirect('/dataguru');
     });
     connection.query(comm2, isik, function(error, results, fields) {
         if (error) throw error;
-        res.redirect('/dataguru');
     });
     connection.query(comm3, isis, function(error, results, fields) {
         if (error) throw error;
@@ -439,6 +442,7 @@ const storage = multer.diskStorage({
     app.post('/uploadfile', upload.single("uploadfile"), (req, res) =>{
     importExcelData2MySQL(__dirname + '/public/uploads/' + req.file.filename);
     console.log(res);
+    res.redirect('datamurid');
     });
     
     function importExcelData2MySQL(filePath){
