@@ -231,7 +231,7 @@ app.post('/guru', function(req, res) {
     });
 const getHadir = conn => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT NIS FROM siswa', (err, result) => {
+        conn.query('SELECT nama_siswa FROM siswa', (err, result) => {
             if(err) {
                 reject(err);
             } else{
@@ -242,7 +242,7 @@ const getHadir = conn => {
 }
 
 app.get('/daftarhadir', function(req, res) {
-    connection.query('SELECT NIS FROM siswa ORDER BY id_satpam desc', function(err, rows) {
+    connection.query('SELECT NIS FROM siswa ORDER BY id_satpam', function(err, rows) {
     res.render('daftarhadir', {
     data: rows
     });
@@ -335,7 +335,7 @@ app.get('/infoguru', async (req, res) => {
 
 const getDaftarsiswa = conn => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT nama_siswa, NIS, status_PTMT, id_ruang FROM siswa', (err, result) => {
+        conn.query('SELECT nama_siswa, NIS, status_PTMT AS tabel1 FROM siswa JOIN periode ON siswa.id_satpam = periode.id_periode', (err, result) => {
             if(err) {
                 reject(err);
             } else{
