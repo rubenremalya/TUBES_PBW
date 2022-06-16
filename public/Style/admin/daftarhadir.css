@@ -83,7 +83,7 @@ body {
 body {
     margin: 0;
     background-color: #e2d6d6;
-    margin-bottom: 450px;
+    margin-bottom: 630px;
 }
 .kapasitas{
     color: black;
@@ -158,8 +158,6 @@ tr:nth-child(even) {
     left: 180px;
     top: 15px;
 }
-form{padding-bottom: 220px;}
-
 
 .logout{
     float: right;

@@ -249,7 +249,7 @@ app.get('/daftarhadir', function(req, res) {
     });
 
     connection.query('SELECT nama_perioda FROM periode ORDER BY id_periode desc',
-    function(err, rows, fields) {
+    function(err, rows) {
         res.render('daftarhadir', {
             data: rows
             });
@@ -347,10 +347,10 @@ const getDaftarsiswa = conn => {
 
 app.get('/daftarsiswa', async (req, res) => {
     const conn = await dbConnect();
-    var resinfo = await getDaftarsiswa(conn);
+    var resdaft = await getDaftarsiswa(conn);
     conn.release();
     res.render('daftarsiswa', {
-        resinfo
+        resdaft
     });
 });
 
