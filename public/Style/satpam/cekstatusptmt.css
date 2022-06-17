@@ -91,13 +91,11 @@ body {
 
 }
 
-
-
 .garis_vertikal{
- border-left: 1px black solid;
- height: 100px;
- margin-left: 950px;
- padding-bottom: 300px;
+    border-left: 1px black solid;
+    height: 100px;
+    margin-left: 950px;
+    padding-bottom: 300px;
 
  }
 .icon{
@@ -164,11 +162,6 @@ tr:nth-child(even) {
 form{
     padding-bottom: 220px;
 }
-
-.icon
-{
-   
-}
 .logout{
     float: right;
     font-size: 45px;
@@ -189,4 +182,6 @@ form{
   left: 930px;
   bottom: 230px;
 }
-
+#generate {
+    border-radius: 4px;
+}
