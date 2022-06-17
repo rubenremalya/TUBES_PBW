@@ -185,3 +185,6 @@ form{
 #generate {
     border-radius: 4px;
 }
+#hidden-panel{
+    display: none;
+}
