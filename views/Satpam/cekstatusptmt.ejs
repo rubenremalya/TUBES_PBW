@@ -44,14 +44,15 @@
                 <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
         </div>
     
-            
+            <form action="/satpam" method="post">
             <div class="namasiswa">
-                <h3>Nama Siswa</h3>
-                
-                Status PTMT : Ya
-                
+                <% for (const row of satpam) {%>
+                <h3>Nama Siswa : <%= row.nama_siswa %></h3> 
+                Status PTMT : 
+                <%= row.status_PTMT %>
+                <% } %>
             </div>
-        </div>
+        </form>
         <div class="vl"></div>
 </form>
 </body>

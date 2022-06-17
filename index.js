@@ -56,8 +56,6 @@ const dbConnect = () => {
 
 
 //--------- LOGIN -------
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 app.get('/', function (req, res) {
 	res.render('loginpage');
@@ -212,20 +210,14 @@ app.get('/dataGuru', (req, res) => {
     res.render('dataGuru');
 });
 
-app.post('/guru', async function(req, res) {
-    const pass_guru = req.body.Fname;
-    const pass_kepsek = req.body.email2;  
-    const pass_satpam = req.body.email3;  
-    const encryptedPassword1 = await bcrypt.hash(pass_guru, saltRounds);
-    const encryptedPassword2 = await bcrypt.hash(pass_kepsek, saltRounds)
-    const encryptedPassword3 = await bcrypt.hash(pass_satpam, saltRounds)
+app.post('/guru', function(req, res) {
     let comm = "INSERT INTO guru SET ?";
     let comm2 = "INSERT INTO kepalasekolah SET ?";
     let comm3 = "INSERT INTO satpam SET ?";
     let isi = {NIP: req.body.Fname, nama_guru: req.body.Lname, username_guru: req.body.email, 
-        pass_guru:encryptedPassword1, kelas: req.body.kelas};
-    let isik = {nama_kepsek: req.body.Fname2, username_kepsek: req.body.Lname2, pass_kepsek:encryptedPassword2};    
-    let isis = {nama_satpam: req.body.Fname3, username_satpam: req.body.Lname3, pass_satpam:encryptedPassword3}; 
+        pass_guru: req.body.Fname, kelas: req.body.kelas};
+    let isik = {nama_kepsek: req.body.Fname2, username_kepsek: req.body.Lname2, pass_kepsek: req.body.email2};    
+    let isis = {nama_satpam: req.body.Fname3, username_satpam: req.body.Lname3, pass_satpam: req.body.email3}; 
     connection.query(comm, isi, function(error, results, fields) {
         if (error) throw error;
     });
@@ -430,9 +422,26 @@ app.post("/generateReport", (req, res) => {
 
 
 //--------- SATPAM -------//
-app.get('/cekstatusptmt', (req, res) => {
-    res.render('cekstatusptmt');
+const getSatpam = conn => {
+    return new Promise((resolve, reject) => {
+        conn.query('SELECT nama_siswa, status_PTMT FROM siswa WHERE id_satpam = 1', (err, result) => {
+            if(err) {
+                reject(err);
+            } else{
+                resolve(result);
+            }
+        })
 })
+}
+
+app.get('/cekstatusptmt', async (req, res) => {
+    const conn = await dbConnect();
+    var satpam = await getSatpam(conn);
+    conn.release();
+    res.render('cekstatusptmt', {
+        satpam
+    });
+});
 
 
 //---------- EXCEL ----------//
