@@ -78,14 +78,15 @@
                 
                 <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
             </div>
-
+            
             <div class="namasiswa">
-                <h3>Nama Siswa</h3>
+                <% for(const row of daftar) {%>
+                <h3>Nama Siswa : <%= row.nama_siswa%></h3>
                 
-                Status PTMT : Ya<br><br>
+                Status PTMT : <%= row.status_PTMT %><br><br>
 
                 Daftar Kehadiran:
-                
+                <% } %>
             </div>
         
         <div class="vl"></div>

@@ -230,9 +230,10 @@ app.post('/guru', function(req, res) {
         res.end();
     });    
     });
+
 const getHadir = conn => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT nama_siswa FROM siswa', (err, result) => {
+        conn.query('SELECT nama_siswa, status_PTMT FROM siswa WHERE id_satpam = 1', (err, result) => {
             if(err) {
                 reject(err);
             } else{
@@ -242,10 +243,13 @@ const getHadir = conn => {
     })
 }
 
-app.get('/daftarhadir', function(req, res) {
-    connection.query('SELECT NIS FROM siswa ORDER BY id_satpam desc', function(err, rows) {
+app.get('/daftarhadir', async function(req, res) {
+    const conn = await dbConnect();
+    var daftar = await getHadir(conn);
+    conn.release();
+    connection.query('SELECT NIS FROM siswa ORDER BY id_satpam', function(err, rows) {
     res.render('daftarhadir', {
-    data: rows
+    data: rows, daftar
     });
     });
 
