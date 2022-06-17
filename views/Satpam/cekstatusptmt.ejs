@@ -26,12 +26,22 @@
         </div>
         <div class="judul">
             <h1>Cek Status PTMT Siswa</h1>
-            <form action="/action_page.php">
+            <form action="/get-states-by-country" method="post">
             <div class="NIS">
-            <table>
-                <br>
-                <tr><td style="padding-bottom: 10px;"><label><td style="padding-bottom: 10px;"><input type="text" name="nis" placeholder="Nomor Induk Siswa"></td></label></td></tr>
-             </table>
+                <table>
+                    <br>
+                    <label for="country">Nomor Induk Siswa : </label>
+                        <select class="form-control" id="country-dropdown">
+                            <option value="">Nomor Induk Siswa</option>
+                            <% if(data.length){
+                                for(var i = 0; i< data.length; i++) {%> 
+                                <option value="<%= data[i].id%>">
+                                    <%= data[i].NIS%>
+                                </option>
+                                <% } } %>
+                        </select>
+                    </form>
+                 </table>
              </div>   
             
             <div class="generate">
@@ -54,6 +64,6 @@
             </div>
         </form>
         <div class="vl"></div>
-</form>
+
 </body>
 </html>
