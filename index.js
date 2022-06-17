@@ -344,7 +344,7 @@ app.get('/infoguru', async (req, res) => {
 
 const getDaftarsiswa = conn => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT nama_siswa, NIS, status_PTMT AS tabel1 FROM siswa JOIN periode ON siswa.id_satpam = periode.id_periode', (err, result) => {
+        conn.query('SELECT nama_siswa, NIS, status_PTMT AS tabel1 FROM siswa', (err, result) => {
             if(err) {
                 reject(err);
             } else{
