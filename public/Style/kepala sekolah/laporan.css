@@ -159,3 +159,10 @@ tr:nth-child(even) {
   background-color: #dddddd;
   color: black;
 }
+
+#btn{
+    margin-left: 50px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}

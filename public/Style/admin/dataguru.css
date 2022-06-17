@@ -151,3 +151,9 @@ body {
 #hidden-panel3 {
     display: none;
 }
+
+#show{
+    margin-top: 20px;
+    margin-left: 50px;
+    border-radius: 5px;
+}
