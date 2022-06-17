@@ -102,14 +102,13 @@ body {
     margin-right: 850px;
     margin-bottom: 300px;
     float: right;
-    position: relative;
-    bottom: 200px;   
+       
 }
 .namasiswa{
     
     position: relative;
-    left: 1100px;
-    bottom: 200px;
+    left: 700px;
+    top: 30px;
     color: black;
     font-size: 25px;
 }
@@ -160,7 +159,7 @@ tr:nth-child(even) {
     top: 115px;
 }
 form{
-    padding-bottom: 220px;
+    padding-bottom: 700px;
 }
 .logout{
     float: right;
@@ -180,7 +179,7 @@ form{
   height: 300px;
   position: relative;
   left: 930px;
-  bottom: 600px;
+  bottom: 850px;
 }
 #generate {
     border-radius: 4px;
