@@ -151,13 +151,13 @@ tr:nth-child(even) {
 }
 .NIS{
     position: relative;
-    left: 650px;
+    right: 200px;
     top: 100px;
 }
 .generate{
     position: relative;
     left: 730px;
-    top: 100px;
+    top: 115px;
 }
 form{
     padding-bottom: 220px;
@@ -180,7 +180,7 @@ form{
   height: 300px;
   position: relative;
   left: 930px;
-  bottom: 400px;
+  bottom: 600px;
 }
 #generate {
     border-radius: 4px;
