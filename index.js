@@ -11,6 +11,8 @@ const url = require ('url');
     const session = require('express-session')
     const pdf = require ('html-pdf');
     const ejs = require ('ejs');
+    const bcrypt = require('bcrypt');
+    const saltRounds = 10;
 
 const PORT = 8080;
 
@@ -210,26 +212,41 @@ app.get('/dataGuru', (req, res) => {
     res.render('dataGuru');
 });
 
-app.post('/guru', function(req, res) {
+app.post('/guru', async function(req, res) {
+    const pass_guru = req.body.Fname;
+    const pass_kepsek = req.body.email2;  
+    const pass_satpam = req.body.email3;  
+    const encryptedPassword1 = await bcrypt.hash(pass_guru, saltRounds);
+    const encryptedPassword2 = await bcrypt.hash(pass_kepsek, saltRounds)
+    const encryptedPassword3 = await bcrypt.hash(pass_satpam, saltRounds)
     let comm = "INSERT INTO guru SET ?";
     let comm2 = "INSERT INTO kepalasekolah SET ?";
     let comm3 = "INSERT INTO satpam SET ?";
     let isi = {NIP: req.body.Fname, nama_guru: req.body.Lname, username_guru: req.body.email, 
-        pass_guru: req.body.Fname, kelas: req.body.kelas};
-    let isik = {nama_kepsek: req.body.Fname2, username_kepsek: req.body.Lname2, pass_kepsek: req.body.email2};    
-    let isis = {nama_satpam: req.body.Fname3, username_satpam: req.body.Lname3, pass_satpam: req.body.email3}; 
-    connection.query(comm, isi, function(error, results, fields) {
+        pass_guru:encryptedPassword1, kelas: req.body.kelas};
+    let isik = {nama_kepsek: req.body.Fname2, username_kepsek: req.body.Lname2, pass_kepsek:encryptedPassword2};    
+    let isis = {nama_satpam: req.body.Fname3, username_satpam: req.body.Lname3, pass_satpam:encryptedPassword3}; 
+    if(pass_guru){
+        connection.query(comm, isi, function(error, results, fields) {
         if (error) throw error;
+        res.redirect('/dataguru');
     });
-    connection.query(comm2, isik, function(error, results, fields) {
+    }
+    else if(pass_kepsek){
+        connection.query(comm2, isik, function(error, results, fields) {
         if (error) throw error;
+        res.redirect('/dataguru');
     });
-    connection.query(comm3, isis, function(error, results, fields) {
+    }
+    else if(pass_satpam){
+        connection.query(comm3, isis, function(error, results, fields) {
         if (error) throw error;
         res.redirect('/dataguru');
         res.end();
     });    
-    });
+    }
+});
+    
 
 const getHadir = conn => {
     return new Promise((resolve, reject) => {
