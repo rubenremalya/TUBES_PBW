@@ -81,70 +81,48 @@ app.get('/', async (req, res) => {
 app.post('/auth', function(req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
-    
+
 	if (username && password) {
 		connection.query('SELECT * FROM admin WHERE username_admin = ? AND pass_admin = ?', 
-        [username, password], async function(error, results, fields) {
-            
+        [username, password], function(error, results, fields) {
+            let role = admin;
 			if (error) throw error;
 			if (results.length > 0) {
-                const comparison = await bcrypt.compare(password, results[0].password) 
-                if(comparison){              
-                res.send({                
-                "userName": results[0].username_admin,                
-                })          
 				req.session.loggedin = true;
 				req.session.username = username;
+                req.session.role = admin;
+                console.log(req.session)
 				res.redirect('/menu');
 			} 
-        }         
+            
             else if(username && password){
                 connection.query('SELECT * FROM siswa WHERE username_siswa = ? AND pass_siswa = ?', 
-                [username, password], async function(error, results, fields) {
+                [username, password], function(error, results, fields) {
                     if (error) throw error;
-			if (results.length > 0) {
-                const comparison = await bcrypt.compare(password, results[0].password) 
-                if(comparison){              
-                res.send({                
-                "userName": results[0].username_siswa,                
-                })          
-				req.session.loggedin = true;
-				req.session.username = username;
-				res.redirect('/menusiswa');
-			} 
+                    if (results.length > 0) {
+                        req.session.loggedin = true;
+                        req.session.username = username;
+                        res.redirect('/menusiswa');
                     } 
                     
                     else if(username && password){
                         connection.query('SELECT * FROM guru WHERE username_guru = ? AND pass_guru = ?', 
-                        [username, password], async function(error, results, fields) {
+                        [username, password], function(error, results, fields) {
                             if (error) throw error;
-			if (results.length > 0) {
-                if(comparison){              
-                    const comparison = await bcrypt.compare(password, results[0].password) 
-                res.send({                
-                "userName": results[0].username_guru,                
-                })          
-				req.session.loggedin = true;
-				req.session.username = username;
-				res.redirect('/menuguru');
-			} 
+                            if (results.length > 0) {
+                                req.session.loggedin = true;
+                                req.session.username = username;
+                                res.redirect('/menuguru');
                             } 
 
                             else if(username && password){
                                 connection.query('SELECT * FROM kepalasekolah WHERE username_kepsek = ? AND pass_kepsek = ?', 
-                                [username, password], async function(error, results, fields) {
+                                [username, password], function(error, results, fields) {
                                     if (error) throw error;
-			if (results.length > 0) {
-                const comparison = await bcrypt.compare(password, results[1].password) 
-                if(comparison){              
-                res.send({                
-                    "id": results[1].id_kepsek,
-                "userName": results[1].username_kepsek,                
-                })          
-				req.session.loggedin = true;
-				req.session.username = username;
-				res.redirect('/menukepsek');
-			} 
+                                    if (results.length > 0) {
+                                        req.session.loggedin = true;
+                                        req.session.username = username;
+                                        res.redirect('/menukepsek');
                                     }
 
                                     else if(username && password){
