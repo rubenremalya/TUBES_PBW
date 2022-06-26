@@ -91,8 +91,6 @@ body {
 
 }
 
-
-
 .garis_vertikal{
  border-left: 1px black solid;
  height: 100px;
@@ -193,4 +191,9 @@ tr:nth-child(even) {
 
 #hidden-panel{
     display: none;
+}
+
+#nama{
+    float: right;
+    margin-top: 45px;
 }

@@ -59,6 +59,19 @@ const dbConnect = () => {
 
 //--------- LOGIN -------
 
+const getLogin = (conn, username, password) => {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT * FROM admin WHERE username_admin = '${username}' AND pass_admin = '${password}'`, (err, result) => {
+            if(err){
+                reject(err);
+            }
+            else{
+                resolve(result);
+            }
+        })
+    })
+}
+
 app.get('/', function (req, res) {
 	res.render('loginpage');
 });
@@ -78,31 +91,39 @@ app.get('/', async (req, res) => {
     });
 });
 
-app.post('/auth', function(req, res) {
+app.post('/auth', async function(req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
+    const conn = await dbConnect();
+    const login = await getLogin(conn, username, password);
 
 	if (username && password) {
-		connection.query('SELECT * FROM admin WHERE username_admin = ? AND pass_admin = ?', 
+		conn.query(`SELECT * FROM admin WHERE username_admin = '${username}' AND pass_admin = '${password}'`, 
         [username, password], function(error, results, fields) {
-            let role = admin;
 			if (error) throw error;
 			if (results.length > 0) {
 				req.session.loggedin = true;
 				req.session.username = username;
-                req.session.role = admin;
+                req.session.nama = results[0].nama_admin;
+                req.session.status = results[0].status;
+                if(results[0].status == "admin"){
+                    res.redirect('menu')
+                }
                 console.log(req.session)
-				res.redirect('/menu');
 			} 
             
             else if(username && password){
-                connection.query('SELECT * FROM siswa WHERE username_siswa = ? AND pass_siswa = ?', 
+                connection.query(`SELECT * FROM siswa WHERE username_siswa = '${username}' AND pass_siswa = '${password}'`, 
                 [username, password], function(error, results, fields) {
                     if (error) throw error;
                     if (results.length > 0) {
                         req.session.loggedin = true;
-                        req.session.username = username;
-                        res.redirect('/menusiswa');
+				        req.session.username = username;
+                        req.session.nama = results[0].nama_siswa;
+                        req.session.status = results[0].status;
+                        if(results[0].status == "siswa"){
+                    res.redirect('menusiswa')
+                }
                     } 
                     
                     else if(username && password){
@@ -165,14 +186,40 @@ app.get('/incorrect', (req, res) => {
     res.render('incorrect');
 })
 
+
 //--------- ADMIN -------
-app.get('/menu', (req, res) => {
-    res.render('menu');
+
+const getMenu = (conn, nama, status) => {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT nama_admin, status FROM admin WHERE nama_admin = '${nama}' AND status = '${status}'`, (err, result) => {
+            if(err){
+                reject(err);
+            }
+            else{
+                resolve(result);
+            }
+        })
+    })
+}
+
+app.get('/menu', async(req, res) => {
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('menu', {
+        nama
+    });
 });
 
 app.get('/periode', async (req, res) => {
-    res.render('periode')
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('periode', {
+        nama
+    });
 });
+
 
 app.post('/periode', function(req, res) {
     let comm = "INSERT INTO periode SET ?";
@@ -205,14 +252,20 @@ const getDataMurid = conn => {
 app.get('/datamurid', async (req, res) => {
     const conn = await dbConnect();
     var resdata = await getDataMurid(conn);
+    const nama = req.session.nama;
     conn.release();
     res.render('datamurid', {
-        resdata
+        resdata, nama
     });
 });
 
-app.get('/dataGuru', (req, res) => {
-    res.render('dataGuru');
+app.get('/dataGuru', async (req, res) => {
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('dataguru', {
+        nama
+    });
 });
 
 app.post('/guru', async function(req, res) {
@@ -266,17 +319,18 @@ const getHadir = conn => {
 app.get('/daftarhadir', async function(req, res) {
     const conn = await dbConnect();
     var daftar = await getHadir(conn);
+    const nama = req.session.nama;
     conn.release();
     connection.query('SELECT NIS FROM siswa ORDER BY id_satpam', function(err, rows) {
     res.render('daftarhadir', {
-    data: rows, daftar
+    data: rows, daftar, nama
     });
     });
 
     connection.query('SELECT nama_perioda FROM periode ORDER BY id_periode desc',
     function(err, rows) {
         res.render('daftarhadir', {
-            data: rows
+            data: rows, nama
             });
             });
         });
@@ -360,7 +414,7 @@ app.get('/infoguru', async (req, res) => {
 
 const getDaftarsiswa = conn => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT nama_siswa, NIS, status_PTMT FROM siswa', (err, result) => {
+        conn.query('SELECT nama_siswa, NIS, status_PTMT, periode, kelas FROM siswa', (err, result) => {
             if(err) {
                 reject(err);
             } else{
@@ -494,7 +548,7 @@ const storage = multer.diskStorage({
     console.log(rows);
     rows.shift();
     
-    let query = 'INSERT INTO siswa (NIS, pass_siswa, username_siswa, id_satpam, id_ruang, nama_siswa, status_PTMT, bukti_vaksin, tanggal_vaksin, vaksin_ke, email_ortu, nama_ortu) VALUES ?';
+    let query = 'INSERT INTO siswa (NIS, pass_siswa, username_siswa, id_satpam, id_ruang, nama_siswa, status_PTMT, bukti_vaksin, tanggal_vaksin, vaksin_ke, email_ortu, nama_ortu, kelas, periode, status) VALUES ?';
     connection.query(query, [rows], (error, response) => {
     console.log(error || response);
     });

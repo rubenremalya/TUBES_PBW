@@ -157,3 +157,8 @@ body {
     margin-left: 50px;
     border-radius: 5px;
 }
+
+#nama{
+    float: right;
+    margin-top: 45px;
+}

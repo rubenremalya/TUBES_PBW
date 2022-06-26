@@ -140,3 +140,8 @@ body {
 .Ruangan{
     text-align: center;
 }
+
+#nama{
+    float: right;
+    margin-top: 45px;
+}
