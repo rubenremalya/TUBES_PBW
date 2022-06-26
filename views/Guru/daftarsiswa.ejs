@@ -34,9 +34,9 @@
         <form action="/action_page.php">
         <label for="perioda" style="color: black; margin-left: 50px; font-size: 25px;"></label>
         <select name="perioda" id="perioda">
-            <option value="1">Periode 1</option>
-            <option value="2">Periode 2</option>
-            <option value="3">Periode 3</option>
+            <% for(const row of resper) {%>
+            <option value="1"><%= row.nama_perioda%></option>
+            <% } %>
         </select>
         <br><br><br>
         <table>

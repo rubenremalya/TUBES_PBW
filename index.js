@@ -189,9 +189,9 @@ app.get('/incorrect', (req, res) => {
 
 //--------- ADMIN -------
 
-const getMenu = (conn, nama, status) => {
+const getPeriode = (conn, nama, status) => {
     return new Promise((resolve, reject) => {
-        connection.query(`SELECT nama_admin, status FROM admin WHERE nama_admin = '${nama}' AND status = '${status}'`, (err, result) => {
+        connection.query(`SELECT nama_perioda FROM periode`, function(err, result){
             if(err){
                 reject(err);
             }
@@ -259,6 +259,13 @@ app.get('/datamurid', async (req, res) => {
     });
 });
 
+app.post('/murid', function(req, res){
+    let comm = "DELETE siswa FROM siswa";
+    connection.query(comm, function(error, results, fields) {
+		if (error) throw error;
+        res.redirect('datamurid');
+		});
+})
 app.get('/dataGuru', async (req, res) => {
     const conn = await dbConnect();
     const nama = req.session.nama;
@@ -427,9 +434,10 @@ const getDaftarsiswa = conn => {
 app.get('/daftarsiswa', async (req, res) => {
     const conn = await dbConnect();
     var resdaft = await getDaftarsiswa(conn);
+    var resper = await getPeriode(conn);
     conn.release();
     res.render('daftarsiswa', {
-        resdaft
+        resdaft, resper
     });
 });
 

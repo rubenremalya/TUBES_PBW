@@ -40,6 +40,7 @@
                 <input type="submit" value="Upload Excel">
               </form>
               <div id="hidden-panel">
+                <form action="/murid" method="post">
                 <table>
                     <tr>
                         <th>Nama Siswa</th>
@@ -57,11 +58,11 @@
                     <% } %>
                     </table>
                 </div>
+                <button type="submit" id="btndelete">Delete data siswa</button>
             </div>
-            <form > 
+        </form>
+        <form > 
         <div class="generate">
-            <button type="submit" id="btn_generate">Delete data siswa</button>
-            <br>
             <button type="button" id="btn_generate" onclick="myFunction()">Generate Password untuk siswa</button>
             
         </div>  
