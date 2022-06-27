@@ -357,21 +357,21 @@ app.get('/daftarhadir', async function(req, res) {
 
 
 //--------- SISWA -------
-app.get('/menusiswa', (req, res) => {
+app.get('/menusiswa', async (req, res) => {
     const conn = await dbConnect();
     const nama = req.session.nama;
     conn.release();
     res.render('menusiswa' , {
-        nama_siswa
+        nama
     });
 })
 
-app.get('/datasiswa', (req, res) => {
+app.get('/datasiswa', async (req, res) => {
     const conn = await dbConnect();
     const nama = req.session.nama;
     conn.release();
     res.render('datasiswa' , {
-        nama_siswa
+        nama
     });
 })
 
@@ -384,12 +384,12 @@ app.post('/siswa', function(req, res) {
 		});
 });
 
-app.get('/dataperiode', (req, res) => {
+app.get('/dataperiode', async (req, res) => {
     const conn = await dbConnect();
     const nama = req.session.nama;
     conn.release();
     res.render('dataperiode' , {
-        nama_siswa
+        nama
     });
 })
 
@@ -415,20 +415,20 @@ app.get('/statusptmt', async function(req, res) {
     connection.query('SELECT nama_perioda FROM periode ORDER BY id_periode desc', function(err, rows) {
         res.render('statusptmt', {
             rest,
-            data: rows
-            nama_siswa
+            data: rows,
+            nama
     });
     });
     });
 
 
 //--------- GURU -------
-app.get('/menuguru', (req, res) => {
+app.get('/menuguru', async (req, res) => {
     const conn = await dbConnect();
     const nama = req.session.nama;
     conn.release();
     res.render('menuguru' , {
-        nama_guru
+        nama
     });
 })
 
@@ -450,8 +450,8 @@ app.get('/infoguru', async (req, res) => {
     const nama = req.session.nama
     conn.release();
     res.render('infoguru', {
-        resinfo
-        nama_guru
+        resinfo,
+        nama
     });
 });
 
@@ -474,49 +474,50 @@ app.get('/daftarsiswa', async (req, res) => {
     var resper = await getPeriode(conn);
     conn.release();
     res.render('daftarsiswa', {
-        resdaft, resper
-        nama_guru
+        resdaft, resper,
+        nama
     });
 });
 
 
 
 //--------- KEPSEK -------
-app.get('/menukepsek', (req, res) => {
+app.get('/menukepsek', async (req, res) => {
     const conn = await dbConnect();
     const nama = req.session.nama;
     conn.release();
     res.render('menukepsek' , {
-        nama_kepsek
+        nama
     });
 })
 
-app.get('/grafiktrendptmt', (req, res) => {
+app.get('/grafiktrendptmt', async (req, res) => {
     const conn = await dbConnect();
     const nama = req.session.nama;
     conn.release();
     res.render('grafiktrendptmt' , {
-        nama_kepsek
+        nama
     });
 })
-app.get('/grafiktrendptmt2', (req, res) => {
+app.get('/grafiktrendptmt2', async (req, res) => {
     const conn = await dbConnect();
     const nama = req.session.nama;
     conn.release();
     res.render('grafiktrendptmt2' , {
-        nama_kepsek
+        nama
     });
-app.get('/grafiktrendptmt3', (req, res) => {
+});
+app.get('/grafiktrendptmt3', async (req, res) => {
     const conn = await dbConnect();
     const nama = req.session.nama;
     conn.release();
     res.render('grafiktrendptmt3' , {
-        nama_kepsek
+        nama
     });
-
+});
 const getLaporan = conn => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT nama_guru FROM guru', (err, result) => {
+        conn.query('SELECT nama_guru, pelajaran FROM guru', (err, result) => {
             if(err) {
                 reject(err);
             } else{
@@ -532,8 +533,8 @@ app.get('/laporan', async (req, res) => {
     var reslap = await getLaporan(conn);
     conn.release();
     res.render('laporan', {
-        reslap
-        nama_kepsek
+        reslap,
+        nama
     });
 });
 
@@ -584,8 +585,8 @@ app.get('/cekstatusptmt', async (req, res) => {
     conn.release();
     connection.query('SELECT NIS FROM siswa ORDER BY id_satpam desc', function(err, rows) {
         res.render('cekstatusptmt', {
-        data: rows, satpam
-        nama_satpam
+        data: rows, satpam,
+        nama
         });
         });     
 });
