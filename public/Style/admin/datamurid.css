@@ -120,6 +120,18 @@ body {
     color: black;
 
 }
+#btndelete{
+    display: block;
+    background-color: white;
+    border: none;
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: black;
+    position: relative;
+    top: 30px; 
+    right: 5px;  
+}
 #btn_generate:hover{
     background-color: #ceee00b7;
 }
