@@ -358,11 +358,21 @@ app.get('/daftarhadir', async function(req, res) {
 
 //--------- SISWA -------
 app.get('/menusiswa', (req, res) => {
-    res.render('menusiswa');
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('menusiswa' , {
+        nama_siswa
+    });
 })
 
 app.get('/datasiswa', (req, res) => {
-    res.render('datasiswa');
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('datasiswa' , {
+        nama_siswa
+    });
 })
 
 app.post('/siswa', function(req, res) {
@@ -375,7 +385,12 @@ app.post('/siswa', function(req, res) {
 });
 
 app.get('/dataperiode', (req, res) => {
-    res.render('dataperiode');
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('dataperiode' , {
+        nama_siswa
+    });
 })
 
 const getStatusptmt = conn => {
@@ -392,6 +407,8 @@ const getStatusptmt = conn => {
 
 app.get('/statusptmt', async function(req, res) {
     const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
     var rest = await getStatusptmt(conn);
     conn.release();
     
@@ -399,6 +416,7 @@ app.get('/statusptmt', async function(req, res) {
         res.render('statusptmt', {
             rest,
             data: rows
+            nama_siswa
     });
     });
     });
@@ -406,7 +424,12 @@ app.get('/statusptmt', async function(req, res) {
 
 //--------- GURU -------
 app.get('/menuguru', (req, res) => {
-    res.render('menuguru');
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('menuguru' , {
+        nama_guru
+    });
 })
 
 const getInfoguru = conn => {
@@ -424,9 +447,11 @@ const getInfoguru = conn => {
 app.get('/infoguru', async (req, res) => {
     const conn = await dbConnect();
     var resinfo = await getInfoguru(conn);
+    const nama = req.session.nama
     conn.release();
     res.render('infoguru', {
         resinfo
+        nama_guru
     });
 });
 
@@ -444,11 +469,13 @@ const getDaftarsiswa = conn => {
 
 app.get('/daftarsiswa', async (req, res) => {
     const conn = await dbConnect();
+    const nama = req.session.nama
     var resdaft = await getDaftarsiswa(conn);
     var resper = await getPeriode(conn);
     conn.release();
     res.render('daftarsiswa', {
         resdaft, resper
+        nama_guru
     });
 });
 
@@ -456,19 +483,36 @@ app.get('/daftarsiswa', async (req, res) => {
 
 //--------- KEPSEK -------
 app.get('/menukepsek', (req, res) => {
-    res.render('menukepsek');
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('menukepsek' , {
+        nama_kepsek
+    });
 })
 
 app.get('/grafiktrendptmt', (req, res) => {
-    res.render('grafiktrendptmt');
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('grafiktrendptmt' , {
+        nama_kepsek
+    });
 })
-
 app.get('/grafiktrendptmt2', (req, res) => {
-    res.render('grafiktrendptmt2');
-})
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('grafiktrendptmt2' , {
+        nama_kepsek
+    });
 app.get('/grafiktrendptmt3', (req, res) => {
-    res.render('grafiktrendptmt3');
-})
+    const conn = await dbConnect();
+    const nama = req.session.nama;
+    conn.release();
+    res.render('grafiktrendptmt3' , {
+        nama_kepsek
+    });
 
 const getLaporan = conn => {
     return new Promise((resolve, reject) => {
@@ -484,10 +528,12 @@ const getLaporan = conn => {
 
 app.get('/laporan', async (req, res) => {
     const conn = await dbConnect();
+    const nama = req.session.nama
     var reslap = await getLaporan(conn);
     conn.release();
     res.render('laporan', {
         reslap
+        nama_kepsek
     });
 });
 
@@ -533,11 +579,13 @@ const getSatpam = conn => {
 
 app.get('/cekstatusptmt', async (req, res) => {
     const conn = await dbConnect();
+    const nama = req.session.nama
     var satpam = await getSatpam(conn);
     conn.release();
     connection.query('SELECT NIS FROM siswa ORDER BY id_satpam desc', function(err, rows) {
         res.render('cekstatusptmt', {
         data: rows, satpam
+        nama_satpam
         });
         });     
 });
