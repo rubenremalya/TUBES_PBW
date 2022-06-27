@@ -171,3 +171,7 @@ tr:nth-child(even) {
     color: black;
     font-weight: bold;
 }
+#nama{
+    float: right;
+    margin-top: 45px;
+}
