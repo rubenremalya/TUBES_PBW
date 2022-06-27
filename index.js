@@ -99,10 +99,9 @@ app.post('/auth', async function(req, res) {
 
 	if (username && password) {
 		conn.query(`SELECT * FROM admin WHERE username_admin = '${username}' AND pass_admin = '${password}'`, 
-        [username, password], async function(error, results, fields) {
+        [username, password], function(error, results, fields) {
 			if (error) throw error;
 			if (results.length > 0) {
-                const comparison = await bcrypt.compare(password, results[0].password)
 				req.session.loggedin = true;
 				req.session.username = username;
                 req.session.nama = results[0].nama_admin;
@@ -123,8 +122,8 @@ app.post('/auth', async function(req, res) {
                         req.session.nama = results[0].nama_siswa;
                         req.session.status = results[0].status;
                         if(results[0].status == "siswa"){
-                    res.redirect('menusiswa')
-                }
+                        res.redirect('menusiswa')
+                        }
                     } 
                     
                     else if(username && password){
@@ -133,9 +132,13 @@ app.post('/auth', async function(req, res) {
                             if (error) throw error;
                             if (results.length > 0) {
                                 req.session.loggedin = true;
-                                req.session.username = username;
-                                res.redirect('/menuguru');
-                            } 
+				                req.session.username = username;
+                                req.session.nama = results[0].nama_guru;
+                                req.session.status = results[0].status;
+                                if(results[0].status == "guru"){
+                                    res.redirect('menusiswa')
+                                } 
+                            }
 
                             else if(username && password){
                                 connection.query('SELECT * FROM kepalasekolah WHERE username_kepsek = ? AND pass_kepsek = ?', 
@@ -143,8 +146,12 @@ app.post('/auth', async function(req, res) {
                                     if (error) throw error;
                                     if (results.length > 0) {
                                         req.session.loggedin = true;
-                                        req.session.username = username;
-                                        res.redirect('/menukepsek');
+				                        req.session.username = username;
+                                        req.session.nama = results[0].nama_kepsek;
+                                        req.session.status = results[0].status;
+                                        if(results[0].status == "kepsek"){
+                                            res.redirect('menukepsek')
+                                        }
                                     }
 
                                     else if(username && password){
@@ -153,9 +160,13 @@ app.post('/auth', async function(req, res) {
                                             if (error) throw error;
                                             if (results.length > 0) {
                                                 req.session.loggedin = true;
-                                                req.session.username = username;
-                                                res.redirect('/cekstatusptmt');
-                                    }
+				                                req.session.username = username;
+                                                req.session.nama = results[0].nama_satpam;
+                                                req.session.status = results[0].status;
+                                                if(results[0].status == "satpam"){
+                                                    res.redirect('cekstatusptmt')
+                                                }
+                                            }
                                         else {
                                             res.redirect('/incorrect');
                                         }			
