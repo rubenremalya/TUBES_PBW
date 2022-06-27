@@ -99,9 +99,10 @@ app.post('/auth', async function(req, res) {
 
 	if (username && password) {
 		conn.query(`SELECT * FROM admin WHERE username_admin = '${username}' AND pass_admin = '${password}'`, 
-        [username, password], function(error, results, fields) {
+        [username, password], async function(error, results, fields) {
 			if (error) throw error;
 			if (results.length > 0) {
+                const comparison = await bcrypt.compare(password, results[0].password)
 				req.session.loggedin = true;
 				req.session.username = username;
                 req.session.nama = results[0].nama_admin;
@@ -286,7 +287,7 @@ app.post('/guru', async function(req, res) {
     let comm2 = "INSERT INTO kepalasekolah SET ?";
     let comm3 = "INSERT INTO satpam SET ?";
     let isi = {NIP: req.body.Fname, nama_guru: req.body.Lname, username_guru: req.body.email, 
-        pass_guru:encryptedPassword1, kelas: req.body.kelas};
+        pass_guru:encryptedPassword1, pelajaran: req.body.mapel, kelas: req.body.kelas};
     let isik = {nama_kepsek: req.body.Fname2, username_kepsek: req.body.Lname2, pass_kepsek:encryptedPassword2};    
     let isis = {nama_satpam: req.body.Fname3, username_satpam: req.body.Lname3, pass_satpam:encryptedPassword3}; 
     if(pass_guru){
@@ -332,16 +333,16 @@ app.get('/daftarhadir', async function(req, res) {
     res.render('daftarhadir', {
     data: rows, daftar, nama
     });
-    });
+    
 
     connection.query('SELECT nama_perioda FROM periode ORDER BY id_periode desc',
     function(err, rows) {
         res.render('daftarhadir', {
-            data: rows, nama
+            data: rows, daftar, nama
             });
             });
         });
-    
+    });
 
 
 //--------- SISWA -------
@@ -354,11 +355,10 @@ app.get('/datasiswa', (req, res) => {
 })
 
 app.post('/siswa', function(req, res) {
-    let comm = "UPDATE siswa SET id_satpam=(SELECT id_satpam FROM siswa WHERE vaksin_ke LIKE '2')";
-    let isi = {vaksin_ke: req.body.vaksin};
-		connection.query(comm, isi, function(error, results, fields) {
+
+		connection.query("UPDATE siswa SET vaksin_ke = 'vaksin_ke: req.body.perioda' WHERE id_satpam = '1'", function(error, results, fields) {
 			if (error) throw error;
-			res.redirect('/dataguru');
+			res.redirect('/statusptmt');
 			res.end();
 		});
 });
@@ -400,7 +400,7 @@ app.get('/menuguru', (req, res) => {
 
 const getInfoguru = conn => {
     return new Promise((resolve, reject) => {
-        conn.query('SELECT NIP, nama_guru, kelas FROM guru', (err, result) => {
+        conn.query('SELECT NIP, nama_guru, pelajaran, kelas FROM guru', (err, result) => {
             if(err) {
                 reject(err);
             } else{
