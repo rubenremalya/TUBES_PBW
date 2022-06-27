@@ -166,3 +166,7 @@ form{padding-bottom: 580px;}
     background-color: #04AA6D;
     border-radius: 10pt;
   }
+  #nama{
+    float: right;
+    margin-top: 45px;
+}

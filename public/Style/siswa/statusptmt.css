@@ -180,3 +180,7 @@ tr:nth-child(even) {
 #ptmt{
     display: none;
 }
+#nama{
+    float: right;
+    margin-top: 45px;
+}

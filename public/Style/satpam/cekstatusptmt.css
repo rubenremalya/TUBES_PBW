@@ -187,3 +187,7 @@ form{
 #hidden-panel{
     display: none;
 }
+#nama{
+    float: right;
+    margin-top: 45px;
+}
