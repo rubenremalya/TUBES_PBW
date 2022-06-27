@@ -159,3 +159,8 @@ tr:nth-child(even) {
   background-color: #dddddd;
   color: black;
 }
+
+#nama{
+    float: right;
+    margin-top: 45px;
+}

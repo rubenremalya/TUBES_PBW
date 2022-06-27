@@ -121,3 +121,8 @@ body {
     background-color: #e2d6d6;
     /* background-image: url(../Image/photo-1603484477859-abe6a73f9366.jpg); */
 }
+
+#nama{
+    float: right;
+    margin-top: 45px;
+}

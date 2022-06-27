@@ -166,3 +166,8 @@ tr:nth-child(even) {
     border-radius: 5px;
     font-weight: bold;
 }
+
+#nama{
+    float: right;
+    margin-top: 45px;
+}
