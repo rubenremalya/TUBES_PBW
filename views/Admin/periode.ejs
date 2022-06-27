@@ -36,9 +36,10 @@
         <form action="/periode" method="post">
         <label for="cars" style="color: black; margin-left: 50px; font-size: 18px;">Pilih Ruang:</label>
         <select style="margin-left:80px;" name="avail" id="ruangan">
-            <option name="ruang">Ruang A</option>
-            <option name="ruang">Ruang B</option>
-            <option name="ruang">Ruang C</option>
+            <% for(const row of resruang) {%>
+            <option name="ruang"><%= row.id_ruang %></option>
+            <% } %>
+
         </select>
         <input type="text" placeholder="Jumlah" id="inputruang" name="jumlah">
     </div>

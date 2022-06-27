@@ -223,12 +223,26 @@ app.get('/menu', async(req, res) => {
     });
 });
 
+const getRuang = (conn, nama, status) => {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT id_ruang FROM ruang`, function(err, result){
+            if(err){
+                reject(err);
+            }
+            else{
+                resolve(result);
+            }
+        })
+    })
+}
+
 app.get('/periode', async (req, res) => {
     const conn = await dbConnect();
     const nama = req.session.nama;
+    const resruang = await getRuang(conn);
     conn.release();
     res.render('periode', {
-        nama
+        nama, resruang
     });
 });
 
@@ -624,12 +638,6 @@ const storage = multer.diskStorage({
     }
 
     var obj = {};
-    
-
-
-    
-
-
 
 app.listen(PORT, () => {
     console.log(`Server is ready, listening on port ${PORT}`);
